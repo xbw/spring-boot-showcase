@@ -1,10 +1,10 @@
 package com.spring.boot;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class SpringBootRedisApplicationTests {
+class WebOldApplicationTests {
 
     @Test
     void contextLoads() {
