@@ -23,7 +23,7 @@ import java.util.concurrent.TimeUnit;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class RedisTemplateTest {
+public class RedisTest {
 
     @Autowired
     private StringRedisTemplate stringRedisTemplate;
@@ -63,7 +63,8 @@ public class RedisTemplateTest {
         String basePackage = "com.spring.boot.project.model";
         operations.set(basePackage, person);
         //redisTemplate.delete(basePackage);
-        Assert.assertEquals(true, redisTemplate.hasKey(basePackage));
+//        Assert.assertEquals(true, redisTemplate.hasKey(basePackage));
+        Assert.assertTrue(redisTemplate.hasKey(basePackage));
         Assert.assertEquals("aa", operations.get(basePackage).getUserName());
     }
 
@@ -74,10 +75,12 @@ public class RedisTemplateTest {
         String basePackage = "com.spring.boot.project.model";
         operations.set(basePackage, person, 2, TimeUnit.SECONDS);
         //redisTemplate.delete(basePackage);
-        Assert.assertEquals(true, redisTemplate.hasKey(basePackage));
+//        Assert.assertEquals(true, redisTemplate.hasKey(basePackage));
+        Assert.assertTrue(redisTemplate.hasKey(basePackage));
         Assert.assertEquals("bb", operations.get(basePackage).getUserName());
 
         Thread.sleep(2000);
-        Assert.assertEquals(false, redisTemplate.hasKey(basePackage));
+//        Assert.assertEquals(false, redisTemplate.hasKey(basePackage));
+        Assert.assertFalse(redisTemplate.hasKey(basePackage));
     }
 }
