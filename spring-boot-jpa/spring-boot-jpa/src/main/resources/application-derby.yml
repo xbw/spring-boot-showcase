@@ -1,0 +1,13 @@
+# Derby
+# when driver-class-name: org.apache.derby.jdbc.EmbeddedDriver
+# com.zaxxer.hikari.util.DriverDataSource report WARN
+# Registered driver with driverClassName=org.apache.derby.jdbc.EmbeddedDriver was not found, trying direct instantiation.
+spring:
+  datasource:
+    driver-class-name: org.apache.derby.jdbc.AutoloadedDriver
+#    url: jdbc:derby:derby_db;create=true
+    url: jdbc:derby:spring-boot-jpa/spring-boot-jpa/src/main/resources/static/derby/derby_db;create=true
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.DerbyTenSevenDialect

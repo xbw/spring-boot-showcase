@@ -25,4 +25,6 @@ hs_err_pid*
 # IDEA
 .idea
 *.iml
+*.db
+*.log
 target

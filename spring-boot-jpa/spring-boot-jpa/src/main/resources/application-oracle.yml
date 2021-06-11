@@ -1,0 +1,11 @@
+# Oracle
+spring:
+  datasource:
+    driver-class-name: oracle.jdbc.OracleDriver
+    url: jdbc:oracle:thin:@localhost:1521/orcl
+    username: SPRING
+    password:
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.Oracle10gDialect

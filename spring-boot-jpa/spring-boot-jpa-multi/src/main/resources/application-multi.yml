@@ -1,0 +1,37 @@
+# Multi
+spring:
+  datasource:
+    driver-class-name: org.h2.Driver
+    url: jdbc:h2:mem:test
+    username: sa
+    password:
+    # 自定义多数据源开送
+    multi:
+      enable: true
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: root
+      password:
+    secondary:
+      driver-class-name: oracle.jdbc.OracleDriver
+      jdbc-url: jdbc:oracle:thin:@localhost:1521/orcl
+      username: SPRING
+      password:
+    tertiary:
+      driver-class-name: org.h2.Driver
+      jdbc-url: jdbc:h2:mem:test
+      username: sa
+      password:
+  h2:
+    console:
+      enabled: true
+      #      path: /h2-console
+      settings:
+        web-allow-others: true
+  jpa:
+    properties:
+      hibernate:
+        primary-dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+        secondary-dialect: org.hibernate.dialect.Oracle10gDialect
+        tertiary-dialect: org.hibernate.dialect.H2Dialect
