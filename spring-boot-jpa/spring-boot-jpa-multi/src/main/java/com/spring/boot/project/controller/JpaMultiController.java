@@ -56,7 +56,7 @@ public class JpaMultiController {
     }
 
     @RequestMapping("user/add")
-    public User addSystemUser() {
+    public User addUser() {
         return userRepository.save(new User("user", "user"));
     }
 

@@ -24,6 +24,13 @@ public class JpaMultiTests {
 
 
     @Test
+    public void testDelete() throws Exception {
+        employeeRepository.deleteAll();
+        employeeRetiredRepository.deleteAll();
+        userRepository.deleteAll();
+    }
+
+    @Test
     public void testSave() throws Exception {
         employeeRepository.save(new Employee("employee", "employee"));
         employeeRetiredRepository.save(new EmployeeRetired("retired", "retired", "1970-01-01"));
@@ -36,13 +43,6 @@ public class JpaMultiTests {
         employeeRepository.findAll();
         employeeRetiredRepository.findAll();
         userRepository.findAll();
-    }
-
-    @Test
-    public void testDelete() throws Exception {
-        employeeRepository.deleteAll();
-        employeeRetiredRepository.deleteAll();
-        userRepository.deleteAll();
     }
 
 }

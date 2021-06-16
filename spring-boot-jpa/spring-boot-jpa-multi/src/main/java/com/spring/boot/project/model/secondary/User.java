@@ -1,9 +1,6 @@
 package com.spring.boot.project.model.secondary;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.io.Serializable;
 
 @Entity
@@ -32,6 +29,7 @@ public class User implements Serializable {
 
     @Id
     @GeneratedValue
+    @Column(name = "user_id")
     public Long getId() {
         return id;
     }

@@ -16,7 +16,7 @@ spring:
     secondary:
       driver-class-name: oracle.jdbc.OracleDriver
       jdbc-url: jdbc:oracle:thin:@localhost:1521/orcl
-      username: SPRING
+      username: ORCL
       password:
     tertiary:
       driver-class-name: org.h2.Driver
