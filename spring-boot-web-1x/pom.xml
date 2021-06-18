@@ -9,7 +9,7 @@
         <relativePath/> <!-- lookup parent from repository -->
     </parent>
     <groupId>com.spring.boot</groupId>
-    <artifactId>spring-boot-web-old</artifactId>
+    <artifactId>spring-boot-web-1x</artifactId>
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
 
@@ -42,10 +42,6 @@
 
     <build>
         <plugins>
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
         </plugins>
     </build>
 
