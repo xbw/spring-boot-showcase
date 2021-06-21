@@ -1,0 +1,25 @@
+#debug: true
+spring:
+  datasource:
+    dynamic:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-master?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: root
+      password:
+    dynamic2:
+      driver-class-name: ${spring.datasource.dynamic.driver-class-name}
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-slave?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: ${spring.datasource.dynamic.username}
+      password: ${spring.datasource.dynamic.password}
+
+
+beetlsql:
+  sqlManagers: sqlManager
+  sqlManager:
+    #    daoSuffix: Mapper # default Mapper
+    dynamic: sqlManager1,sqlManager2
+    basePackage: com.spring.boot.**.mapper,com.spring.boot.**.dynamic
+  sqlManager1:
+    ds: dynamicDs
+  sqlManager2:
+    ds: dynamic2Ds

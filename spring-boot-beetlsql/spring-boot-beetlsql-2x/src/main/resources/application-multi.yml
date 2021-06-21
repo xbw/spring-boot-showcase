@@ -1,0 +1,21 @@
+#debug: true
+spring:
+  datasource:
+    primary:
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-master?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: root
+      password:
+    secondary:
+      driver-class-name: ${spring.datasource.primary.driver-class-name}
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-slave?serverTimezone=Asia/Shanghai&useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      username: ${spring.datasource.primary.username}
+      password: ${spring.datasource.primary.password}
+
+
+beetlsql:
+  basePackage: com.spring.boot.**.dao
+#  daoSuffix: Dao
+#  dbStyle: org.beetl.sql.core.db.MySqlStyle
+#  nameConversion: org.beetl.sql.core.UnderlinedNameConversion
+  sqlPath: /beetlsql # default /sql

@@ -1,0 +1,8 @@
+#debug: true
+spring:
+  profiles:
+    active: default
+
+logging:
+  level:
+    com.spring.boot: debug
