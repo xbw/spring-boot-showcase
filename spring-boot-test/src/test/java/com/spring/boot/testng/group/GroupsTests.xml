@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="GroupsTests Suite">
+    <test name="GroupsTests">
+        <groups>
+            <run>
+                <include name="group"/>
+                <exclude name="default,custom"/>
+            </run>
+        </groups>
+        <classes>
+            <class name="com.spring.boot.testng.group.GroupsTests">
+            </class> <!-- com.spring.boot.testng.TestNGTests -->
+        </classes>
+    </test> <!-- spring-boot-showcase -->
+</suite> <!-- Default Suite -->

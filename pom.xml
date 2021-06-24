@@ -20,6 +20,7 @@
         <module>spring-boot-jpa/spring-boot-jpa</module>
         <module>spring-boot-jpa/spring-boot-jpa-multi</module>
         <module>spring-boot-redis</module>
+        <module>spring-boot-test</module>
         <module>spring-boot-web</module>
         <module>spring-boot-web-1x</module>
     </modules>
