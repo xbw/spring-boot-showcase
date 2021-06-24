@@ -15,10 +15,10 @@
     <name>${project.artifactId}</name>
 
     <modules>
-        <module>spring-boot-beetlsql/spring-boot-beetlsql</module>
-        <module>spring-boot-beetlsql/spring-boot-beetlsql-2x</module>
-        <module>spring-boot-jpa/spring-boot-jpa</module>
-        <module>spring-boot-jpa/spring-boot-jpa-multi</module>
+        <module>spring-boot-jdbc/spring-boot-beetlsql</module>
+        <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>
+        <module>spring-boot-jdbc/spring-boot-jpa</module>
+        <module>spring-boot-jdbc/spring-boot-jpa-multi</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-test</module>
         <module>spring-boot-web</module>
