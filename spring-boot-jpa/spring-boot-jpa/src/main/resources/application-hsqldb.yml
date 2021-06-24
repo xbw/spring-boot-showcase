@@ -1,0 +1,14 @@
+# HyperSQL,HSQLDB
+# http://www.hsqldb.org/doc/1.8/guide/guide.html#N1013D
+# http://www.hsqldb.org/doc/guide/running-chapt.html#rgc_server_modes
+spring:
+  datasource:
+    driver-class-name: org.hsqldb.jdbcDriver
+    url: jdbc:hsqldb:file:./spring-boot-jpa/spring-boot-jpa/src/main/resources/static/hsqldb/hsqldb;shutdown=true
+#    url: jdbc:hsqldb:mem:hsqldb;shutdown=true
+    username: sa
+    password:
+#  jpa:
+#    properties:
+#      hibernate:
+#        dialect: org.hibernate.dialect.HSQLDialect
