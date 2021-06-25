@@ -4,7 +4,7 @@
 spring:
   datasource:
     driver-class-name: org.hsqldb.jdbcDriver
-    url: jdbc:hsqldb:file:./spring-boot-jpa/spring-boot-jpa/src/main/resources/static/hsqldb/hsqldb;shutdown=true
+    url: jdbc:hsqldb:file:./database/hsqldb/hsqldb_db;shutdown=true
 #    url: jdbc:hsqldb:mem:hsqldb;shutdown=true
     username: sa
     password:

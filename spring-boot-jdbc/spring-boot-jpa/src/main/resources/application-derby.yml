@@ -6,7 +6,7 @@ spring:
   datasource:
     driver-class-name: org.apache.derby.jdbc.AutoloadedDriver
 #    url: jdbc:derby:derby_db;create=true
-    url: jdbc:derby:spring-boot-jpa/spring-boot-jpa/src/main/resources/static/derby/derby_db;create=true
+    url: jdbc:derby:database/derby/derby_db;create=true
 #  jpa:
 #    properties:
 #      hibernate:
