@@ -10,7 +10,7 @@ spring:
       enable: true
     primary:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&characterSetResults=utf8
+      jdbc-url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
       username: root
       password:
     secondary:
