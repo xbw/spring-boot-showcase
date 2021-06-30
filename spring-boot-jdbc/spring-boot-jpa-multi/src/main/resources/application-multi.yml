@@ -1,37 +1,41 @@
 # Multi
 spring:
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   datasource:
-    driver-class-name: org.h2.Driver
-    url: jdbc:h2:mem:test
-    username: sa
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
     password:
-    # 自定义多数据源开送
-    multi:
-      enable: true
+    jdbc-url: ${spring.datasource.url}
     primary:
-      driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
-      username: root
-      password:
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: jdbc:mysql://localhost:3306/springboot-primary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      jdbc-url: ${spring.datasource.primary.url}
     secondary:
-      driver-class-name: oracle.jdbc.OracleDriver
-      jdbc-url: jdbc:oracle:thin:@localhost:1521/orcl
-      username: ORCL
-      password:
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: jdbc:mysql://localhost:3306/springboot-secondary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      jdbc-url: ${spring.datasource.secondary.url}
     tertiary:
       driver-class-name: org.h2.Driver
-      jdbc-url: jdbc:h2:mem:test
+      url: jdbc:h2:mem:test
       username: sa
       password:
+      jdbc-url: ${spring.datasource.tertiary.url}
   h2:
     console:
       enabled: true
-      #      path: /h2-console
+#      path: /h2-console
       settings:
         web-allow-others: true
   jpa:
     properties:
       hibernate:
         primary-dialect: org.hibernate.dialect.MySQL5InnoDBDialect
-        secondary-dialect: org.hibernate.dialect.Oracle10gDialect
+        secondary-dialect: org.hibernate.dialect.MySQL5InnoDBDialect
         tertiary-dialect: org.hibernate.dialect.H2Dialect

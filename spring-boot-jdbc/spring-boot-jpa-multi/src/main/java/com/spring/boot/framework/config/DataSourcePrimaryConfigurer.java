@@ -1,6 +1,8 @@
 package com.spring.boot.framework.config;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateProperties;
 import org.springframework.boot.autoconfigure.orm.jpa.HibernateSettings;
@@ -22,16 +24,17 @@ import javax.sql.DataSource;
 import java.util.Map;
 
 @Configuration
-@ConditionalOnProperty(name = "spring.datasource.multi.enable", havingValue = "true")
+@ConditionalOnProperty(name = "spring.profiles.active", havingValue = "multi")
 @EnableTransactionManagement
 @EnableJpaRepositories(
 //        entityManagerFactoryRef = "entityManagerFactoryPrimary",
 //        transactionManagerRef = "transactionManagerPrimary",
         basePackages = {"com.spring.boot.project.repository.primary"}) //设置Repository所在位置
-public class DataSourcePrimaryConfig {
+public class DataSourcePrimaryConfigurer {
 
-//    @Autowired
-//    private DataSource dataSource;
+    @Autowired
+    @Qualifier("dataSourcePrimary")
+    private DataSource dataSource;
 
     @Autowired
     private JpaProperties jpaProperties;
@@ -39,18 +42,12 @@ public class DataSourcePrimaryConfig {
     @Autowired
     private HibernateProperties hibernateProperties;
 
-    @Bean
-    @Primary
-    @ConfigurationProperties("spring.datasource.primary")
-    public DataSource dataSource() {
-        return DataSourceBuilder.create().build();
-    }
 
     @Primary
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder) {
         return builder
-                .dataSource(dataSource())
+                .dataSource(dataSource)
                 .properties(getVendorProperties())
                 .packages("com.spring.boot.project.model.primary") //设置实体类所在位置
                 .persistenceUnit("persistenceUnitPrimary")

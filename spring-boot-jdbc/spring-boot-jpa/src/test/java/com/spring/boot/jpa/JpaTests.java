@@ -8,7 +8,9 @@ import com.spring.boot.project.model.User;
 import com.spring.boot.project.repository.EmployeeRepository;
 import com.spring.boot.project.repository.EmployeeRetiredRepository;
 import com.spring.boot.project.repository.UserRepository;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.data.domain.Page;
@@ -19,6 +21,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class JpaTests {
 
     @Autowired

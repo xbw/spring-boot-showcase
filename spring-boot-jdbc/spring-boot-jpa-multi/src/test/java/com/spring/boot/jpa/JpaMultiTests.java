@@ -6,11 +6,14 @@ import com.spring.boot.project.model.secondary.User;
 import com.spring.boot.project.repository.primary.EmployeeRetiredRepository;
 import com.spring.boot.project.repository.secondary.UserRepository;
 import com.spring.boot.project.repository.tertiary.EmployeeRepository;
+import org.junit.jupiter.api.MethodOrderer;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.TestMethodOrder;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
+@TestMethodOrder(MethodOrderer.MethodName.class)
 class JpaMultiTests {
     @Autowired
     private EmployeeRepository employeeRepository;
