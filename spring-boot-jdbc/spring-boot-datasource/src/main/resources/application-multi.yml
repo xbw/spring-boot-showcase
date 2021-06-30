@@ -1,0 +1,70 @@
+# Multi
+spring:
+#  autoconfigure:
+#    exclude:
+#      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
+  datasource:
+    hikari:
+      # https://github.com/brettwooldridge/HikariCP#gear-configuration-knobs-baby
+      driver-class-name: ${spring.datasource.driver-class-name}
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    tomcat:
+      # https://tomcat.apache.org/tomcat-9.0-doc/jdbc-pool.html#Common_Attributes
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    dbcp2:
+      # https://commons.apache.org/proper/commons-dbcp/configuration.html
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    oracleucp:
+      server-name: ${spring.datasource.driver-class-name}
+      u-r-l: ${spring.datasource.url}
+      user: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+      validate-connection-on-borrow: true
+#      connection-factory-class-name: com.mysql.cj.jdbc.MysqlDataSource
+#      connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
+
+
+    druid:
+      # https://github.com/alibaba/druid/issues/3888
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    tomcat-dbcp2:
+      # https://tomcat.apache.org/tomcat-9.0-doc/jndi-datasource-examples-howto.html#Installation
+      driver-class-name: ${spring.datasource.driver-class-name}
+      url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    c3p0:
+      # https://www.mchange.com/projects/c3p0/#configuration_properties
+      driver-class: ${spring.datasource.driver-class-name}
+      jdbc-url: ${spring.datasource.url}
+      user: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+
+    oracle:
+      server-name: ${spring.datasource.driver-class-name}
+      u-r-l: ${spring.datasource.url}
+      user: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+
+
+#    type: com.zaxxer.hikari.HikariDataSource # default
+#    type: org.apache.tomcat.jdbc.pool.DataSource
+#    type: org.apache.commons.dbcp2.BasicDataSource
+#    type: oracle.ucp.jdbc.PoolDataSource
+#    type: com.alibaba.druid.pool.DruidDataSource
+#    type: org.apache.tomcat.dbcp.dbcp2.BasicDataSource
+#    type: com.mchange.v2.c3p0.ComboPooledDataSource
+#    type: org.springframework.jdbc.datasource.DriverManagerDataSource
+#    type: org.springframework.jdbc.datasource.SimpleDriverDataSource
+#    type: oracle.jdbc.replay.OracleDataSource

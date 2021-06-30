@@ -1,0 +1,15 @@
+# MySQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
+    password:
+    oracleucp:
+      connection-factory-class-name: com.mysql.cj.jdbc.MysqlDataSource
+
+    initialization-mode: never # default embedded
+    continue-on-error: true # default false
+    platform: mysql
+#    schema: classpath:schema.sql
+#    data: classpath:data.sql

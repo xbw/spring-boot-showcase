@@ -1,0 +1,4 @@
+# jndi
+spring:
+  datasource:
+    jndi-name: jdbc/customJNDI

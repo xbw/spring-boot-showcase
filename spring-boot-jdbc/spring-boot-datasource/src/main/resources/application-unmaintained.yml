@@ -1,0 +1,17 @@
+# UNMAINTAINED!
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
+    password:
+    proxool:
+      driver: ${spring.datasource.driver-class-name}
+      driver-url: ${spring.datasource.url}
+      user: ${spring.datasource.username}
+      password: ${spring.datasource.password}
+    bonecp:
+      driver-class-name: ${spring.datasource.driver-class-name}
+      jdbc-url: ${spring.datasource.url}
+      username: ${spring.datasource.username}
+      password: ${spring.datasource.password}

@@ -1,0 +1,11 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+#    include: multi
+  autoconfigure:
+    exclude:
+      - org.springframework.boot.autoconfigure.h2.H2ConsoleAutoConfiguration
+      - com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceAutoConfigure
+  datasource:
+    jdbc-url: ${spring.datasource.url} # default hikari
