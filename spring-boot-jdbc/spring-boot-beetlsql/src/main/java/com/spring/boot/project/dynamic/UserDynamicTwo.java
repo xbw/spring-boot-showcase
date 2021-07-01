@@ -4,7 +4,7 @@ import com.spring.boot.project.model.User;
 import org.beetl.sql.annotation.entity.Table;
 import org.beetl.sql.annotation.entity.TargetSQLManager;
 
-@Table(name = "user")
+@Table(name = "users")
 @TargetSQLManager("sqlManager2")
 public class UserDynamicTwo extends User {
     public UserDynamicTwo() {

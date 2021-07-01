@@ -18,6 +18,6 @@ public interface UserSecondaryMapper extends BaseMapper<User> {
     User findByUserCode(String userCode);
 
     @Update
-    @Sql("delete from user where user_code=?")
+    @Sql("delete from users where user_code=?")
     int deleteByUserCode(String UserCode);
 }

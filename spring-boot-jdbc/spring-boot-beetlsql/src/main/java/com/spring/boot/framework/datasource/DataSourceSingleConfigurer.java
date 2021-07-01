@@ -67,7 +67,7 @@ public class DataSourceSingleConfigurer {
                  * @see DBInitHelper
                  * @see NullPointerException
                  */
-//                DBInitHelper.executeSqlScript(sqlManager, "static/init.sql");
+//                DBInitHelper.executeSqlScript(sqlManager, "schema-mysql.sql");
                 sqlManager.setInters(new Interceptor[]{new BeetlSqlDebugInterceptor(isSimple)});
             }
         };
