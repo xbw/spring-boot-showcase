@@ -4,7 +4,7 @@ spring:
     driver-class-name: org.sqlite.JDBC
 #    url: jdbc:sqlite::resource:static/sqlite/sqlite.db
     url: jdbc:sqlite:database/sqlite/sqlite.db
-#  jpa:
-#    properties:
-#      hibernate:
-#        dialect: org.sqlite.hibernate.dialect.SQLiteDialect
+  jpa:
+    properties:
+      hibernate:
+        dialect: org.sqlite.hibernate.dialect.SQLiteDialect

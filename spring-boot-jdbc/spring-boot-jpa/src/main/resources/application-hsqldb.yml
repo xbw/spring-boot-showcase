@@ -3,7 +3,7 @@
 # http://www.hsqldb.org/doc/guide/running-chapt.html#rgc_server_modes
 spring:
   datasource:
-    driver-class-name: org.hsqldb.jdbcDriver
+    driver-class-name: org.hsqldb.jdbc.JDBCDriver
     url: jdbc:hsqldb:file:./database/hsqldb/hsqldb_db;shutdown=true
 #    url: jdbc:hsqldb:mem:hsqldb;shutdown=true
     username: sa
