@@ -1,0 +1,13 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+
+# MyBatis
+mybatis:
+  config-location: classpath:mybatis/mybatis-config.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+  type-aliases-package: com.spring.boot.**.model
+#  configLocation: classpath:mybatis/mybatis-config.xml
+#  mapperLocations: classpath:mybatis/mapper/*.xml
+#  typeAliasesPackage: com.spring.boot.project.model

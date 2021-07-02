@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.spring.boot.project.multi.mapper.primary.MultiUserMapper">
+
+    <resultMap id="userResult" type="com.spring.boot.project.model.User">
+        <id column="user_id" property="id" jdbcType="BIGINT"/>
+        <result column="user_code" property="userCode" jdbcType="VARCHAR"/>
+        <result column="user_name" property="userName" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <sql id="userColumns">
+        user_id
+        , user_Code, user_name
+    </sql>
+
+    <select id="findById" parameterType="Long" resultMap="userResult">
+        SELECT
+        <include refid="userColumns"/>
+        FROM users
+        WHERE user_id = #{id}
+    </select>
+
+    <select id="findByUserCode" parameterType="String" resultMap="userResult">
+        SELECT
+        <include refid="userColumns"/>
+        FROM users
+        WHERE user_code = #{userCode}
+    </select>
+
+    <select id="findAll" resultMap="userResult">
+        SELECT *
+        FROM users
+    </select>
+
+    <select id="findToMap" resultType="CamelKeyMap">
+        SELECT *
+        FROM users
+    </select>
+
+    <insert id="insert" parameterType="User" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO users(user_code, user_name)
+        VALUES (#{userCode}, #{userName})
+    </insert>
+
+    <update id="update" parameterType="User">
+        UPDATE users
+        SET user_code=#{userCode},
+            user_name=#{userName}
+        WHERE user_id = #{id}
+    </update>
+
+    <delete id="delete" parameterType="java.lang.Long">
+        DELETE
+        FROM users
+        WHERE user_id = #{id}
+    </delete>
+</mapper>

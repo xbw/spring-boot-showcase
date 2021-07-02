@@ -1,0 +1,15 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+
+# MyBatis
+mybatis:
+  configuration:
+    log-impl: org.apache.ibatis.logging.slf4j.Slf4jImpl # default
+#    log-impl: org.apache.ibatis.logging.commons.JakartaCommonsLoggingImpl
+#    log-impl: org.apache.ibatis.logging.log4j2.Log4j2Impl
+#    log-impl: org.apache.ibatis.logging.log4j.Log4jImpl
+#    log-impl: org.apache.ibatis.logging.jdk14.Jdk14LoggingImpl
+#    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
+    map-underscore-to-camel-case: true
