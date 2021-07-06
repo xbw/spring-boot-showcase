@@ -7,6 +7,9 @@ import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
+import java.util.List;
+import java.util.Map;
+
 @Repository
 public class UserDao {
 
@@ -36,5 +39,9 @@ public class UserDao {
      */
     public void findAllByHandler(ResultHandler handler) {
         sqlSessionTemplate.select("com.spring.boot.project.mapper.UsersMapper.findAll", handler);
+    }
+
+    public List<Map> findToMap() {
+        return sqlSessionTemplate.selectList("com.spring.boot.project.mapper.UsersMapper.findToMap");
     }
 }

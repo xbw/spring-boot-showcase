@@ -4,14 +4,17 @@
 
     <settings>
         <setting name="logImpl" value="SLF4J"/>
-        <!--        <setting name="logImpl" value="LOG4J"/>-->
-        <!--        <setting name="logImpl" value="LOG4J2"/>-->
-        <!--        <setting name="logImpl" value="JDK_LOGGING"/>-->
-        <!--        <setting name="logImpl" value="COMMONS_LOGGING"/>-->
-        <!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
-        <!--        <setting name="logImpl" value="NO_LOGGING"/>-->
+<!--        <setting name="logImpl" value="LOG4J"/>-->
+<!--        <setting name="logImpl" value="LOG4J2"/>-->
+<!--        <setting name="logImpl" value="JDK_LOGGING"/>-->
+<!--        <setting name="logImpl" value="COMMONS_LOGGING"/>-->
+<!--        <setting name="logImpl" value="STDOUT_LOGGING"/>-->
+<!--        <setting name="logImpl" value="NO_LOGGING"/>-->
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>  <!--default false-->
+        <setting name="callSettersOnNulls" value="true"/>
+        <setting name="objectWrapperFactory" value="com.spring.boot.framework.mybatis.MybatisMapWrapperFactory"/>
+<!--        <setting name="objectWrapperFactory" value="org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory"/>-->
     </settings>
 
     <typeAliases>

@@ -77,6 +77,7 @@ class MybatisXmlTests {
     @Test
     void findToMap() {
         print(userMapper.findToMap());
+        print(userDao.findToMap());
     }
 
     @Test

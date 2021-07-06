@@ -77,6 +77,7 @@ class MybatisAnnotationTests {
     @Test
     void findToMap() {
         print(userMapper.findToMap());
+        print(userMapper.findMap());
         print(sysJUserMapper.findToMap());
     }
 

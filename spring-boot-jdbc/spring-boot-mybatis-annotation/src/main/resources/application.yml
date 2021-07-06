@@ -13,3 +13,5 @@ mybatis:
 #    log-impl: org.apache.ibatis.logging.jdk14.Jdk14LoggingImpl
 #    log-impl: org.apache.ibatis.logging.nologging.NoLoggingImpl
     map-underscore-to-camel-case: true
+    call-setters-on-nulls: true
+#    object-wrapper-factory: com.spring.boot.framework.mybatis.MybatisMapWrapperFactory

@@ -90,9 +90,9 @@ public class DataSourceConfigurer {
             sessionFactory.setConfiguration(mybatisProperties.getConfiguration());
         } else {
             sessionFactory.setConfigLocation(new DefaultResourceLoader().getResource(mybatisProperties.getConfigLocation()));
-            sessionFactory.setMapperLocations(mybatisProperties.resolveMapperLocations());
-            sessionFactory.setTypeAliasesPackage(mybatisProperties.getTypeAliasesPackage());
         }
+        sessionFactory.setMapperLocations(mybatisProperties.resolveMapperLocations());
+        sessionFactory.setTypeAliasesPackage(mybatisProperties.getTypeAliasesPackage());
         return sessionFactory;
     }
 }

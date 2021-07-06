@@ -17,4 +17,9 @@
         SELECT *
         FROM users
     </select>
+
+    <select id="findToMap" parameterType="String" resultType="Map">
+        SELECT *
+        FROM users
+    </select>
 </mapper>

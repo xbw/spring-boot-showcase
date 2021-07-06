@@ -6,6 +6,7 @@ import org.apache.ibatis.annotations.*;
 import org.apache.ibatis.session.ResultHandler;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 public interface UserMapper {
@@ -48,5 +49,8 @@ public interface UserMapper {
 
     @Select("SELECT * FROM users")
     List<CamelKeyMap> findToMap();
+
+    @Select("SELECT * FROM users")
+    List<Map> findMap();
 
 }
