@@ -1,7 +1,10 @@
 package com.spring.boot.mybatis;
 
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.json.JsonMapper;
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
 import com.spring.boot.project.mapper.UserMapper;
 import com.spring.boot.project.model.User;
 import org.junit.jupiter.api.Assertions;
@@ -14,6 +17,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.Random;
 
@@ -72,6 +76,21 @@ class MybatisPlusMapperTests {
         print(userMapper.findToMap());
         print(userMapper.findToMapByAnnotation());
         print(userMapper.selectMaps(null));
+    }
+
+    @Test
+    void selectPage() {
+        Page<User> page = new Page<>();
+        userMapper.selectPage(page, null);
+        print(page);
+        page = new Page<>(1, 5);
+        userMapper.findPage(page);
+        print(page);
+
+        // PageHelper
+        PageInfo<User> info = PageHelper.startPage(1, 5).doSelectPageInfo(() -> userMapper.selectList(null));
+        List<User> list = info.getList();
+        print(info);
     }
 
     @Test

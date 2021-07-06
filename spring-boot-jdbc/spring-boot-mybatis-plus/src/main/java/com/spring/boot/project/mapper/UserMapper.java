@@ -1,6 +1,8 @@
 package com.spring.boot.project.mapper;
 
 import com.baomidou.mybatisplus.core.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.spring.boot.framework.mybatis.CamelKeyMap;
 import com.spring.boot.project.model.User;
 import org.apache.ibatis.annotations.Mapper;
@@ -16,4 +18,6 @@ public interface UserMapper extends BaseMapper<User> {
 
     @Select("SELECT * FROM sys_j_user")
     List<CamelKeyMap> findToMapByAnnotation();
+
+    IPage<User> findPage(Page<?> page);
 }

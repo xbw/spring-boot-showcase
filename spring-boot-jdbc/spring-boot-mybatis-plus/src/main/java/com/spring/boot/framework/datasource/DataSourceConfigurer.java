@@ -3,15 +3,11 @@ package com.spring.boot.framework.datasource;
 import com.baomidou.mybatisplus.autoconfigure.ConfigurationCustomizer;
 import com.baomidou.mybatisplus.autoconfigure.MybatisPlusProperties;
 import com.baomidou.mybatisplus.core.MybatisConfiguration;
-import com.baomidou.mybatisplus.extension.MybatisMapWrapperFactory;
 import com.baomidou.mybatisplus.extension.spring.MybatisSqlSessionFactoryBean;
-import com.spring.boot.framework.config.MybatisPlusConfig;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.SqlSessionTemplate;
 import org.springframework.beans.factory.ObjectProvider;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.core.io.DefaultResourceLoader;
@@ -22,9 +18,12 @@ import javax.sql.DataSource;
 import java.util.List;
 
 /**
+ * TODO mybatis-plus:globalConfig etc.
+ *
  * @see com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration#sqlSessionFactory(DataSource)
+ * @see MybatisSqlSessionFactoryBean#buildSqlSessionFactory()
  */
-@Configuration
+//@Configuration
 public class DataSourceConfigurer {
     private final List<ConfigurationCustomizer> configurationCustomizers;
     @Autowired
@@ -61,7 +60,7 @@ public class DataSourceConfigurer {
      * @see com.baomidou.mybatisplus.autoconfigure.MybatisPlusAutoConfiguration#applyConfiguration(MybatisSqlSessionFactoryBean)
      */
     private void applyConfiguration(MybatisSqlSessionFactoryBean factory) {
-        // TODO 使用 MybatisConfiguration
+        // TODO use MybatisConfiguration
         MybatisConfiguration configuration = mybatisPlusProperties.getConfiguration();
         if (configuration == null && !StringUtils.hasText(mybatisPlusProperties.getConfigLocation())) {
             configuration = new MybatisConfiguration();

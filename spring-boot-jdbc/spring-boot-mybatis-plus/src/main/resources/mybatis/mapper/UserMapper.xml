@@ -17,4 +17,10 @@
         SELECT *
         FROM users
     </select>
+
+    <select id="findPage" resultMap="userResult">
+        SELECT *
+        FROM users
+    </select>
+
 </mapper>
