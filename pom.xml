@@ -22,6 +22,7 @@
         <module>spring-boot-jdbc/spring-boot-jpa-multi</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-annotation</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-multi</module>
+        <module>spring-boot-jdbc/spring-boot-mybatis-plus</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-xml</module>
         <module>spring-boot-redis</module>
         <module>spring-boot-test</module>
