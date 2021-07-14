@@ -1,0 +1,7 @@
+# HAZELCAST
+spring:
+  cache:
+    type: hazelcast
+  hazelcast:
+    # https://github.com/spring-projects/spring-boot/issues/6714
+    config: classpath:hazelcast-default.xml

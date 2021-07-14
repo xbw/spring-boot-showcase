@@ -1,0 +1,7 @@
+# INFINISPAN
+spring:
+  cache:
+    type: infinispan
+    cache-names:
+      - spring:boot
+      - springboot

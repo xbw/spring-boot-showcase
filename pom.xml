@@ -9,6 +9,7 @@
     <name>${project.artifactId}</name>
 
     <modules>
+        <module>spring-boot-cache/spring-boot-cache</module>
         <module>spring-boot-cache/spring-boot-redis</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>

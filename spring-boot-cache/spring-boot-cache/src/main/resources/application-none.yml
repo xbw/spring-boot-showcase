@@ -1,0 +1,4 @@
+# NONE
+spring:
+  cache:
+    type: none

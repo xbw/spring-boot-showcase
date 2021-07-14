@@ -1,0 +1,7 @@
+# EHCACHE
+spring:
+  cache:
+    type: ehcache
+    # EhCache 2.x is used if a file named ehcache.xml can be found at the root of the classpath.
+    ehcache:
+      config: classpath:cache/ehcache.xml

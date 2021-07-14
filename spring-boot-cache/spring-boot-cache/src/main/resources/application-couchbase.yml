@@ -1,0 +1,9 @@
+# COUCHBASE
+spring:
+  cache:
+    type: couchbase
+    couchbase:
+      expiration: 60s
+  # If Spring Data Couchbase is available and Couchbase is configured, a CouchbaseCacheManager is auto-configured.
+  couchbase:
+    connection-string: localhost

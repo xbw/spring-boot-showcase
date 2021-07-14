@@ -1,0 +1,6 @@
+# SIMPLE
+spring:
+  cache:
+    type: simple
+    # By default, caches are created as needed, but you can restrict the list of available caches by setting the cache-names property.
+    cache-names: "spring:boot"

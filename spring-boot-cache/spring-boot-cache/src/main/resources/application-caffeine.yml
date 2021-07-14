@@ -1,0 +1,11 @@
+# CAFFEINE
+spring:
+  cache:
+    type: caffeine
+    # By default, caches are created as needed, but you can restrict the list of available caches by setting the cache-names property.
+#    cache-names:
+#      - spring:boot
+#      - springboot
+    caffeine:
+#      spec: maximumSize=1024,expireAfterWrite=5s,expireAfterAccess=3s
+      spec: maximumSize=1024,refreshAfterWrite=600s # refreshAfterWrite requires a LoadingCache
