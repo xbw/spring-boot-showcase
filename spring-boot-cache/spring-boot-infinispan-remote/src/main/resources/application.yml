@@ -1,0 +1,29 @@
+#debug: true
+spring:
+  cache:
+    type: infinispan
+    cache-names:
+      # Caused by: javax.management.MalformedObjectNameException: Invalid character ':' in value part of property
+      # - spring:boot
+      - springboot
+# https://docs.jboss.org/infinispan/12.1/apidocs/org/infinispan/client/hotrod/configuration/package-summary.html
+infinispan:
+  embedded:
+    enabled: false
+  remote:
+    enabled: true
+    server-list: localhost:11222
+    client-intelligence: BASIC
+    # activates statistics for actuator
+    jmx: true
+    # https://infinispan.org/docs/dev/titles/spring_boot/starter.html#exposing_infinispan_statistics
+    statistics: true
+    # near caching
+    near-cache-mode: INVALIDATED
+    near-cache-max-entries: 100
+    # Security settings. Comment these properties if you are using a non secured server
+    sasl-mechanism: DIGEST-MD5
+    auth-realm: default
+    auth-server-name: infinispan
+    auth-username: root
+    auth-password: root

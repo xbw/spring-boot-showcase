@@ -1,0 +1,11 @@
+#debug: true
+spring:
+  cache:
+    type: infinispan
+    cache-names:
+      - spring:boot
+      - springboot
+infinispan:
+  embedded:
+    enabled: true
+#    config-xml: cache/infinispan.xml
