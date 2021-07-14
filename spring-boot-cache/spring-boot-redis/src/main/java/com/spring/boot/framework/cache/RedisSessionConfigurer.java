@@ -1,6 +1,5 @@
-package com.spring.boot.framework.config;
+package com.spring.boot.framework.cache;
 
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.serializer.Jackson2JsonRedisSerializer;
@@ -8,12 +7,10 @@ import org.springframework.data.redis.serializer.RedisSerializer;
 import org.springframework.session.data.redis.config.annotation.web.http.EnableRedisHttpSession;
 
 /**
- * 实测 Spring Boot 2.x
- * 增加spring-session-data-redis后 @EnableRedisHttpSession 已生效
- * 如果仅使用默认配置，本Class可删除
+ * when spring-session-data-redis exist, @EnableRedisHttpSession is default enabled
+ * if there is no extension configurator ,this class can be deleted
  */
 @Configuration
-@ConditionalOnProperty(name = "redis.session.enable", havingValue = "true")
 @EnableRedisHttpSession(maxInactiveIntervalInSeconds = 60 * 60 * 24)
 public class RedisSessionConfigurer {
     /**
