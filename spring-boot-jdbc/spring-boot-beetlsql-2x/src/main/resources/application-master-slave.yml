@@ -14,7 +14,7 @@ spring:
 
 
 beetlsql:
-  basePackage: com.spring.boot.**.dao
+  basePackage: com.xbw.spring.boot.**.dao
 #  daoSuffix: Dao
 #  dbStyle: org.beetl.sql.core.db.MySqlStyle
 #  nameConversion: org.beetl.sql.core.UnderlinedNameConversion

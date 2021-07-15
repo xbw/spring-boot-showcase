@@ -1,0 +1,23 @@
+package com.xbw.spring.boot.project.multi.mapper.primary;
+
+import com.xbw.spring.boot.project.model.User;
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.List;
+import java.util.Map;
+
+@Mapper
+public interface MultiUserMapper {
+
+    int insert(User user);
+
+    void update(User user);
+
+    void delete(Long id);
+
+    User findByUserCode(String userCode);
+
+    User findById(Long id);
+
+    List<Map> findToMap();
+}

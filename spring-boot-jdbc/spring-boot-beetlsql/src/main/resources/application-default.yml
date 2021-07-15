@@ -11,13 +11,13 @@ spring:
 #beetlsql:
 #  sqlManagers: default
 #  default:
-#    basePackage: com.spring.boot.**.mapper
+#    basePackage: com.xbw.spring.boot.**.mapper
 ##    daoSuffix: Mapper # default Mapper
 #    ds: dataSource
 
 beetlsql:
   sqlManagers: sqlManager
   sqlManager:
-    basePackage: com.spring.boot.**.mapper
+    basePackage: com.xbw.spring.boot.**.mapper
 #    daoSuffix: Mapper # default Mapper
     ds: dataSource

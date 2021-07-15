@@ -5,4 +5,4 @@ spring:
 
 logging:
   level:
-    com.spring.boot: debug
+    com.xbw.spring.boot: debug

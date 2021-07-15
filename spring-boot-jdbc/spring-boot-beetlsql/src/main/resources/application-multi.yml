@@ -16,10 +16,10 @@ spring:
 beetlsql:
   sqlManagers: sqlManager,secondarySqlManager
   sqlManager:
-    basePackage: com.spring.boot.**.mapper
+    basePackage: com.xbw.spring.boot.**.mapper
 #    daoSuffix: Mapper # default Mapper
     ds: primaryDs
   secondarySqlManager:
-    basePackage: com.spring.boot.**.multiple
+    basePackage: com.xbw.spring.boot.**.multiple
     daoSuffix: SecondaryMapper # default Mapper
     ds: secondaryDs

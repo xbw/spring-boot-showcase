@@ -18,7 +18,7 @@ beetlsql:
   sqlManager:
     #    daoSuffix: Mapper # default Mapper
     dynamic: sqlManager1,sqlManager2
-    basePackage: com.spring.boot.**.mapper,com.spring.boot.**.dynamic
+    basePackage: com.xbw.spring.boot.**.mapper,com.xbw.spring.boot.**.dynamic
   sqlManager1:
     ds: dynamicDs
   sqlManager2:

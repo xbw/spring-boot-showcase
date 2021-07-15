@@ -53,7 +53,7 @@ public class MybatisPlusConfig {
 ```yaml
 mybatis:
   configuration:
-#    object-wrapper-factory: com.spring.boot.framework.mybatis.MybatisMapWrapperFactory
+#    object-wrapper-factory: MybatisMapWrapperFactory
 ```
 and
 ```java
@@ -79,7 +79,7 @@ public class MybatisPlusConfig {
 
 ---
 ### custom SqlSessionFactory
-`com.spring.boot.framework.datasource.DataSourceConfigurer#sqlSessionFactory(DataSource) `
+`DataSourceConfigurer#sqlSessionFactory(DataSource) `
 
 #### use `org.springframework.core.convert.converter.Converter`
 Same as the default SqlSessionFactory
@@ -136,7 +136,7 @@ public class DataSourceConfigurer {
 
 ---
 ### All SqlSessionFactory
-use `com.spring.boot.framework.mybatis.CamelKeyMap`
+use `CamelKeyMap`
 ```java
 public interface UserMapper {
     @Select("SELECT * FROM users")

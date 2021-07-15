@@ -13,12 +13,12 @@
         <setting name="mapUnderscoreToCamelCase" value="true"/>
         <setting name="useGeneratedKeys" value="false"/>  <!--default false-->
         <setting name="callSettersOnNulls" value="true"/>
-        <setting name="objectWrapperFactory" value="com.spring.boot.framework.mybatis.MybatisMapWrapperFactory"/>
+        <setting name="objectWrapperFactory" value="MybatisMapWrapperFactory"/>
 <!--        <setting name="objectWrapperFactory" value="org.apache.ibatis.reflection.wrapper.DefaultObjectWrapperFactory"/>-->
     </settings>
 
     <typeAliases>
-        <typeAlias alias="CamelKeyMap" type="com.spring.boot.framework.mybatis.CamelKeyMap"/>
+        <typeAlias alias="CamelKeyMap" type="CamelKeyMap"/>
     </typeAliases>
 
 </configuration>

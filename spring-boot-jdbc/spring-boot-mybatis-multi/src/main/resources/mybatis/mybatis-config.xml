@@ -15,7 +15,7 @@
     </settings>
 
     <typeAliases>
-        <typeAlias alias="CamelKeyMap" type="com.spring.boot.framework.mybatis.CamelKeyMap"/>
+        <typeAlias alias="CamelKeyMap" type="CamelKeyMap"/>
     </typeAliases>
 
 </configuration>
