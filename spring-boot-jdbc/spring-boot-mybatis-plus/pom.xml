@@ -7,6 +7,7 @@
         <groupId>com.spring.boot</groupId>
         <artifactId>spring-boot-showcase</artifactId>
         <version>1.0.0</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>spring-boot-mybatis-plus</artifactId>
     <version>1.0.0</version>
