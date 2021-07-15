@@ -15,6 +15,10 @@ public class Person implements Serializable {
         super();
     }
 
+    public Person(Long id) {
+        this.id = id;
+    }
+
     public Person(String userName, String nickName, String birthday) {
         this.id = id;
         this.userName = userName;

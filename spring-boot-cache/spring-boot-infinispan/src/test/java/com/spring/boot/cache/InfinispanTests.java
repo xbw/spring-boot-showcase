@@ -26,9 +26,9 @@ class InfinispanTests {
     void cache() {
         logger.info("CacheManager -> {}", cacheManager.getClass());
         cacheManager.getCacheNames()
-                .forEach(cacheName -> logger.info("CacheName -> {} , Cache -> {} , NativeCache -> {}",
-                        cacheName, cacheManager.getCache(cacheName),
-                        cacheManager.getCache(cacheName).getNativeCache()));
+                .forEach(cacheName -> logger.info("CacheName -> {}, \nCache -> {}, \nNativeCache -> {}",
+                        cacheName, cacheManager.getCache(cacheName).getClass(),
+                        cacheManager.getCache(cacheName).getNativeCache().getClass()));
     }
 
     @Test

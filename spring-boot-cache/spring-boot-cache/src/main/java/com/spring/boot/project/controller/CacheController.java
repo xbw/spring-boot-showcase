@@ -33,12 +33,12 @@ public class CacheController {
     }
 
     @RequestMapping("/evict")
-    public void evict() {
-        cacheService.evict();
+    public String evict() {
+        return cacheService.evict();
     }
 
     @RequestMapping("/evict/{id}")
-    public void evict(@PathVariable Long id) {
-        cacheService.evict(id);
+    public String evict(@PathVariable Long id) {
+        return cacheService.evict(id);
     }
 }

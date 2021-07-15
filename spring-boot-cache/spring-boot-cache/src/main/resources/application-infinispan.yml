@@ -5,3 +5,7 @@ spring:
     cache-names:
       - spring:boot
       - springboot
+#infinispan:
+#  embedded:
+#    enabled: true
+#    config-xml: cache/infinispan.xml
