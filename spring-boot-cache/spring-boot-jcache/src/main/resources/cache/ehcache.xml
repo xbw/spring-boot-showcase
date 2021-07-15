@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config xmlns:xsi='http://www.w3.org/2001/XMLSchema-instance'
+        xmlns='http://www.ehcache.org/v3'
+        xsi:schemaLocation="http://www.ehcache.org/v3 http://www.ehcache.org/schema/ehcache-core-3.0.xsd">
+    <!--<persistence directory="${user.home}/cache-data"/>-->
+    <persistence directory="${java.io.tmpdir}/ehcache"/>
+
+    <cache-template name="default-template">
+        <key-type>java.lang.Object</key-type>
+        <value-type>java.lang.Object</value-type>
+        <heap unit="entries">200</heap>
+    </cache-template>
+
+    <!-- When use spring-boot-starter-actuator report:
+         Caused by: io.micrometer.core.instrument.config.InvalidConfigurationException:
+         Cache name 'spring:boot' results in an invalid JMX name-->
+    <cache alias="spring:boot" uses-template="default-template">
+        <key-type>java.io.Serializable</key-type>
+        <value-type>java.io.Serializable</value-type>
+        <heap unit="entries">100</heap>
+    </cache>
+
+    <cache alias="springboot" uses-template="default-template">
+        <key-type>org.springframework.cache.interceptor.SimpleKey</key-type>
+        <resources>
+            <heap unit="entries">200</heap>
+            <disk persistent="true" unit="MB">100</disk>
+        </resources>
+    </cache>
+</config>
+

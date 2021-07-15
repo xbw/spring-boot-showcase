@@ -1,0 +1,7 @@
+# JCACHE
+spring:
+  cache:
+    type: jcache
+    jcache:
+      # com.github.benmanes.caffeine.jcache.CacheProxy
+      provider: com.github.benmanes.caffeine.jcache.spi.CaffeineCachingProvider

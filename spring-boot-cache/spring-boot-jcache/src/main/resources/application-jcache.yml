@@ -1,0 +1,5 @@
+# JCACHE
+spring:
+  cache:
+    type: jcache
+    cache-names: spring:boot,springboot

@@ -1,0 +1,7 @@
+# JCACHE
+spring:
+  cache:
+    type: jcache
+    jcache:
+      # class com.hazelcast.cache.impl.CacheProxy
+      provider: com.hazelcast.cache.HazelcastMemberCachingProvider

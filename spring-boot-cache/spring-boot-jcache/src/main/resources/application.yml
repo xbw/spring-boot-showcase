@@ -1,0 +1,5 @@
+#debug: true
+spring:
+  profiles:
+    active: jcache-jcs
+    include: jcache

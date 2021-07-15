@@ -1,0 +1,8 @@
+# JCACHE
+spring:
+  cache:
+    type: jcache
+    jcache:
+      # org.infinispan.jcache.embedded.JCache
+      provider: org.infinispan.jcache.embedded.JCachingProvider
+      config: classpath:cache/infinispan.xml
