@@ -1,0 +1,7 @@
+# JCACHE
+spring:
+  cache:
+    type: jcache
+    jcache:
+      # org.apache.commons.jcs3.jcache.JCSCache
+      provider: org.apache.commons.jcs3.jcache.JCSCachingProvider

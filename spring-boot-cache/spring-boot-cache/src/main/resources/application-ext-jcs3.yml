@@ -1,0 +1,9 @@
+# JCS3
+spring:
+  cache:
+    type: jcs3
+    cache-names:
+      - spring:boot
+      - springboot
+    jcs:
+      config: classpath:cache/cache.ccf
