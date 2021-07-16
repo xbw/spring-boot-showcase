@@ -13,6 +13,7 @@
         <module>spring-boot-cache/spring-boot-infinispan</module>
         <module>spring-boot-cache/spring-boot-infinispan-remote</module>
         <module>spring-boot-cache/spring-boot-jcache</module>
+        <module>spring-boot-cache/spring-boot-memcached</module>
         <module>spring-boot-cache/spring-boot-redis</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>
