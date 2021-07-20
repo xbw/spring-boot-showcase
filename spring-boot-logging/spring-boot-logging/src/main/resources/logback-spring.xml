@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- in org.springframework.boot:spring-boot -->
+    <include resource="org/springframework/boot/logging/logback/base.xml"/>
+
+    <!-- https://docs.spring.io/spring-boot/docs/current/reference/html/features.html#features.logging.logback-extensions.profile-specific -->
+    <springProfile name="default | development">
+        <logger name="org.springframework.web" level="debug"/>
+        <logger name="com.xbw.spring.boot" level="debug"/>
+    </springProfile>
+
+    <springProfile name="production">
+        <logger name="org.springframework.web" level="error"/>
+        <logger name="com.xbw.spring.boot" level="info"/>
+    </springProfile>
+</configuration>
