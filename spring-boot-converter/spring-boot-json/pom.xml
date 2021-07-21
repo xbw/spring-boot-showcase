@@ -6,6 +6,7 @@
         <groupId>com.xbw.spring.boot</groupId>
         <artifactId>spring-boot-showcase</artifactId>
         <version>1.0.0</version>
+        <relativePath>../../pom.xml</relativePath>
     </parent>
     <artifactId>spring-boot-json</artifactId>
     <version>1.0.0</version>
@@ -86,7 +87,8 @@
                 <exclusion>
                     <groupId>com.vaadin.external.google</groupId>
                     <artifactId>android-json</artifactId>
-                </exclusion></exclusions>
+                </exclusion>
+            </exclusions>
         </dependency>
     </dependencies>
 

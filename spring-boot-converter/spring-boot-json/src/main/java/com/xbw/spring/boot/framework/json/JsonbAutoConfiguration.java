@@ -1,4 +1,4 @@
-package com.xbw.spring.boot.framework.config;
+package com.xbw.spring.boot.framework.json;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;

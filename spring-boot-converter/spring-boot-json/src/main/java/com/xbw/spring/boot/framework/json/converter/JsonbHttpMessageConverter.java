@@ -14,7 +14,7 @@
  * limitations under the License.
  */
 
-package com.xbw.spring.boot.framework.json;
+package com.xbw.spring.boot.framework.json.converter;
 
 import jakarta.json.bind.Jsonb;
 import jakarta.json.bind.JsonbBuilder;

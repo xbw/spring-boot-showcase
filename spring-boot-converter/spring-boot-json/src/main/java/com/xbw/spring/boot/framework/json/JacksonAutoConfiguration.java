@@ -1,4 +1,4 @@
-package com.xbw.spring.boot.framework.config;
+package com.xbw.spring.boot.framework.json;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.json.JsonMapper;

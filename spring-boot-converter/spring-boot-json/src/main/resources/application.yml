@@ -1,0 +1,13 @@
+spring:
+  mvc:
+    contentnegotiation:
+      favor-parameter: true
+      parameter-name: format
+    converters:
+      preferred-json-mapper: jackson
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss.SSS
+    time-zone: GMT+8
+  gson:
+    date-format: ${spring.jackson.date-format}
+    pretty-printing: true

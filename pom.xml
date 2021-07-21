@@ -15,6 +15,7 @@
         <module>spring-boot-cache/spring-boot-jcache</module>
         <module>spring-boot-cache/spring-boot-memcached</module>
         <module>spring-boot-cache/spring-boot-redis</module>
+        <module>spring-boot-converter/spring-boot-json</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql</module>
         <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>
         <module>spring-boot-jdbc/spring-boot-datasource</module>
@@ -24,7 +25,6 @@
         <module>spring-boot-jdbc/spring-boot-mybatis-multi</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-plus</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-xml</module>
-        <module>spring-boot-json</module>
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-test</module>
