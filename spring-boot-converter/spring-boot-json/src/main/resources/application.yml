@@ -2,12 +2,17 @@ spring:
   mvc:
     contentnegotiation:
       favor-parameter: true
-      parameter-name: format
+      # https://spring.io/blog/2013/05/11/content-negotiation-using-spring-mvc
+      # Enable the use of the URL parameter but instead of using the default parameter, format, we will use mediaType instead.
+      parameter-name: mediaType
     converters:
       preferred-json-mapper: jackson
   jackson:
     date-format: yyyy-MM-dd HH:mm:ss.SSS
     time-zone: GMT+8
+    serialization:
+      fail-on-empty-beans: false
+      # write-dates-as-timestamps: false # for LocalDateTime
   gson:
     date-format: ${spring.jackson.date-format}
-    pretty-printing: true
+#    pretty-printing: true

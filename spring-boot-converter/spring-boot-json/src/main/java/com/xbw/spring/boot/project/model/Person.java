@@ -2,6 +2,8 @@ package com.xbw.spring.boot.project.model;
 
 
 import java.io.Serializable;
+import java.time.LocalDateTime;
+import java.util.Date;
 
 public class Person implements Serializable {
 
@@ -10,6 +12,8 @@ public class Person implements Serializable {
     private String userName;
     private String nickName;
     private String birthday;
+    private Date date;
+    private LocalDateTime localDateTime;
 
     public Person() {
         super();
@@ -31,6 +35,15 @@ public class Person implements Serializable {
         this.userName = userName;
         this.nickName = nickName;
         this.birthday = birthday;
+    }
+
+    public Person(Long id, String userName, String nickName, String birthday, Date date, LocalDateTime localDateTime) {
+        this.id = id;
+        this.userName = userName;
+        this.nickName = nickName;
+        this.birthday = birthday;
+        this.date = date;
+        this.localDateTime = localDateTime;
     }
 
     public Long getId() {
@@ -63,5 +76,21 @@ public class Person implements Serializable {
 
     public void setBirthday(String birthday) {
         this.birthday = birthday;
+    }
+
+    public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
+
+    public LocalDateTime getLocalDateTime() {
+        return localDateTime;
+    }
+
+    public void setLocalDateTime(LocalDateTime localDateTime) {
+        this.localDateTime = localDateTime;
     }
 }
