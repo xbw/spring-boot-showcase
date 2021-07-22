@@ -1,8 +1,8 @@
 package com.xbw.spring.boot.framework.config;
 
 import com.fasterxml.jackson.datatype.jsr310.ser.LocalDateTimeSerializer;
-import com.google.gson.JsonPrimitive;
-import com.google.gson.JsonSerializer;
+import com.xbw.spring.boot.framework.json.gson.LocalDateTimeSerializers;
+import com.xbw.spring.boot.framework.json.gson.LocalDateTimeTypeAdapter;
 import org.springframework.boot.autoconfigure.gson.GsonBuilderCustomizer;
 import org.springframework.boot.autoconfigure.gson.GsonProperties;
 import org.springframework.boot.autoconfigure.jackson.Jackson2ObjectMapperBuilderCustomizer;
@@ -56,9 +56,10 @@ public class LocalDateTimeConfig {
      */
     @Bean
     public GsonBuilderCustomizer localDateTimeGsonBuilderCustomizer(GsonProperties properties) {
-        return builder -> builder.registerTypeAdapter(LocalDateTime.class,
-                (JsonSerializer<LocalDateTime>)
-                        (src, typeOfSrc, context) -> new JsonPrimitive(getFormatter(properties.getDateFormat()).format(src)));
+        return builder -> {
+            builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeTypeAdapter()); // Priority use
+            builder.registerTypeAdapter(LocalDateTime.class, new LocalDateTimeSerializers());
+        };
     }
 
     private DateTimeFormatter getFormatter(String pattern) {
