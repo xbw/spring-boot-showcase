@@ -6,21 +6,18 @@ import com.google.gson.TypeAdapterFactory;
 import com.google.gson.reflect.TypeToken;
 import com.google.gson.stream.JsonReader;
 import com.google.gson.stream.JsonToken;
-import com.google.gson.stream.JsonWriter;
+import org.springframework.util.Assert;
 
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 /**
- * <p>New applications should prefer {@link TypeAdapter}, whose streaming API
- * is more efficient than this interface's tree API.
+ * Type adapter for LocalDateTime.
  *
  * @author xbw
- * @version 1.0.0
- * @date 2021/7/22
  */
-public class LocalDateTimeTypeAdapter extends TypeAdapter<LocalDateTime> {
+public class LocalDateTimeTypeAdapter extends AbstractTemporalTypeAdapter<LocalDateTime> {
 
     public static final TypeAdapterFactory FACTORY = new TypeAdapterFactory() {
         @SuppressWarnings("unchecked") // we use a runtime check to make sure the 'T's equal
@@ -30,39 +27,22 @@ public class LocalDateTimeTypeAdapter extends TypeAdapter<LocalDateTime> {
         }
     };
 
-    private DateTimeFormatter formatter;
-
     public LocalDateTimeTypeAdapter() {
-        this.formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        this(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
     }
 
     public LocalDateTimeTypeAdapter(DateTimeFormatter formatter) {
-        this.formatter = formatter;
-    }
-
-    @Override
-    public void write(JsonWriter out, LocalDateTime value) throws IOException {
-        if (value == null) {
-            out.nullValue();
-            return;
-        }
-        out.value(formatter.format(value));
+        super(formatter, LocalDateTime::from);
     }
 
     @Override
     public LocalDateTime read(JsonReader in) throws IOException {
+        Assert.notNull(getFormatter(), "DateTimeFormatter must not be null");
         if (in.peek() == JsonToken.NULL) {
             in.nextNull();
             return null;
         }
-        return LocalDateTime.parse(in.nextString(), formatter);
+        return LocalDateTime.parse(in.nextString(), getFormatter());
     }
 
-    public DateTimeFormatter getFormatter() {
-        return formatter;
-    }
-
-    public void setFormatter(DateTimeFormatter formatter) {
-        this.formatter = formatter;
-    }
 }

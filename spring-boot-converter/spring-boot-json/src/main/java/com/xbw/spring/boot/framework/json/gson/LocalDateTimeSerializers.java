@@ -11,8 +11,6 @@ import java.time.format.DateTimeFormatter;
  * is more efficient than this interface's tree API.
  *
  * @author xbw
- * @version 1.0.0
- * @date 2021/7/22
  */
 public class LocalDateTimeSerializers implements JsonDeserializer<LocalDateTime>, JsonSerializer<LocalDateTime> {
     private DateTimeFormatter formatter;

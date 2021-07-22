@@ -24,7 +24,6 @@ public class Person implements Serializable {
     }
 
     public Person(String userName, String nickName, String birthday) {
-        this.id = id;
         this.userName = userName;
         this.nickName = nickName;
         this.birthday = birthday;
