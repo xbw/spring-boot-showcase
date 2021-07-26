@@ -3,6 +3,9 @@ package com.xbw.spring.boot;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.boot.web.servlet.support.SpringBootServletInitializer;
 
+/**
+ * https://docs.spring.io/spring-boot/docs/current/reference/html/howto.html#howto.traditional-deployment
+ */
 public class WebServletInitializer extends SpringBootServletInitializer {
 
     @Override
