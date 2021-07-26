@@ -21,6 +21,7 @@
         <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>
         <module>spring-boot-jdbc/spring-boot-datasource</module>
         <module>spring-boot-jdbc/spring-boot-datasource-initialization</module>
+        <module>spring-boot-jdbc/spring-boot-jooq</module>
         <module>spring-boot-jdbc/spring-boot-jpa</module>
         <module>spring-boot-jdbc/spring-boot-jpa-multi</module>
         <module>spring-boot-jdbc/spring-boot-mybatis-annotation</module>
