@@ -1,0 +1,35 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.1-001
+      author: xbw
+      changes:
+        - insert:
+            tableName: sys_j_user
+            columns:
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+              - column:
+                  name: user_code
+                  value: mysql
+              - column:
+                  name: user_name
+                  value: mysql
+        - insert:
+            tableName: users
+            columns:
+              - column:
+                  name: user_id
+                  valueNumeric: 1
+              - column:
+                  name: user_code
+                  value: test
+              - column:
+                  name: user_name
+                  value: test
+  - changeSet:
+      id: v1.0.1-002
+      author: xbw
+      changes:
+        - sqlFile:
+            path: db/migration/V1_0_2__Data.sql

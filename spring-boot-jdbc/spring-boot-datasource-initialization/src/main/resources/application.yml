@@ -1,0 +1,10 @@
+#debug: true
+spring:
+  profiles:
+    # active: basic-sql-scripts
+    active: hibernate
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    username: root
+    password:

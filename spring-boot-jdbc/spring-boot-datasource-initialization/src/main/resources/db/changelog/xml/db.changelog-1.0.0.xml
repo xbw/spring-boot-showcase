@@ -1,0 +1,33 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="v1.0.0-001" author="xbw">
+        <createTable tableName="sys_j_user">
+            <column name="user_id" type="bigint(20)" remarks="userId" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_code" type="varchar(255)" remarks="userCode"/>
+            <column name="user_name" type="varchar(255)" remarks="userName"/>
+        </createTable>
+        <createTable tableName="users">
+            <column name="user_id" type="bigint(20)" remarks="id" autoIncrement="true">
+                <constraints primaryKey="true" nullable="false"/>
+            </column>
+            <column name="user_code" type="varchar(255)" remarks="userCode"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v1.0.0-002" author="xbw">
+        <addColumn tableName="users">
+            <column name="user_name" type="varchar(255)" remarks="userName"/>
+            <column name="user_name_two" type="varchar(255)" remarks="userNameTwo"/>
+        </addColumn>
+    </changeSet>
+
+    <changeSet id="v1.0.0-003" author="xbw">
+        <dropColumn tableName="users" columnName="user_name_two"/>
+    </changeSet>
+
+</databaseChangeLog>

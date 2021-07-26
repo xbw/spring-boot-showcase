@@ -1,0 +1,9 @@
+spring:
+  jpa:
+    open-in-view: false
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: true
+    # In addition to YAML, Liquibase also supports JSON, XML, and SQL change log formats.
+    change-log: classpath:db/changelog/db.changelog-master.xml

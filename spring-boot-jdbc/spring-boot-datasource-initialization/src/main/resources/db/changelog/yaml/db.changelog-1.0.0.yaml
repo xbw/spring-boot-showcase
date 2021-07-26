@@ -1,0 +1,52 @@
+databaseChangeLog:
+  - changeSet:
+      id: v1.0.0-001
+      author: xbw
+      changes:
+        - createTable:
+            tableName: sys_j_user
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  name: user_id
+                  type: bigint(20)
+                  remarks: userId
+              - column:
+                  name: user_code
+                  type: varchar(255)
+                  remarks: userCode
+              - column:
+                  name: user_name
+                  type: varchar(255)
+                  remarks: userName
+        - createTable:
+            tableName: users
+            columns:
+              - column:
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+                  name: user_id
+                  type: bigint(20)
+                  remarks: id
+              - column:
+                  name: user_code
+                  type: varchar(255)
+                  remarks: userCode
+  - changeSet:
+      id: v1.0.0-002
+      author: xbw
+      changes:
+        - addColumn:
+            tableName: users
+            columns:
+              - column:
+                  name: user_name
+                  type: varchar(255)
+                  remarks: userName
+              - column:
+                  name: user_name_two
+                  type: varchar(255)
+                  remarks: userNameTwo

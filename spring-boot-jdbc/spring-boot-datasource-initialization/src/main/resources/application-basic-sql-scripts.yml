@@ -1,0 +1,17 @@
+spring:
+  sql:
+    init:
+      # "replacement": "spring.sql.init.mode"
+      #enabled: true
+      mode: always
+      continue-on-error: true
+      platform: mysql
+      schema-locations: classpath:db/basic-sql-scripts/schema-mysql.sql
+      data-locations: classpath:db/basic-sql-scripts/data-mysql.sql
+  jpa:
+    open-in-view: false
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: false
+

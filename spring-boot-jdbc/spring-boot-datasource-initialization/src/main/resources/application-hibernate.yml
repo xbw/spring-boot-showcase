@@ -1,0 +1,11 @@
+spring:
+  jpa:
+    open-in-view: false
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: create-drop
+  flyway:
+    enabled: false
+  liquibase:
+    enabled: false

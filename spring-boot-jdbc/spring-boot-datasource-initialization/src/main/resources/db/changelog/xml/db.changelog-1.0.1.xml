@@ -1,0 +1,23 @@
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-2.0.xsd">
+
+    <changeSet id="v1.0.1-001" author="xbw">
+        <insert tableName="sys_j_user">
+            <column name="user_id" valueNumeric="1"/>
+            <column name="user_code" value="mysql"/>
+            <column name="user_name" value="mysql"/>
+        </insert>
+        <insert tableName="users">
+            <column name="user_id" valueNumeric="1"/>
+            <column name="user_code" value="test"/>
+            <column name="user_name" value="test"/>
+        </insert>
+    </changeSet>
+
+    <changeSet id="v1.0.1-002" author="xbw">
+        <sqlFile path="db/migration/V1_0_2__Data.sql"/>
+    </changeSet>
+
+</databaseChangeLog>
