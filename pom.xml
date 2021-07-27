@@ -17,17 +17,17 @@
         <module>spring-boot-cache/spring-boot-redis</module>
         <module>spring-boot-converter/spring-boot-converter</module>
         <module>spring-boot-converter/spring-boot-json</module>
-        <module>spring-boot-jdbc/spring-boot-beetlsql</module>
-        <module>spring-boot-jdbc/spring-boot-beetlsql-2x</module>
-        <module>spring-boot-jdbc/spring-boot-datasource</module>
-        <module>spring-boot-jdbc/spring-boot-datasource-initialization</module>
-        <module>spring-boot-jdbc/spring-boot-jooq</module>
-        <module>spring-boot-jdbc/spring-boot-jpa</module>
-        <module>spring-boot-jdbc/spring-boot-jpa-multi</module>
-        <module>spring-boot-jdbc/spring-boot-mybatis-annotation</module>
-        <module>spring-boot-jdbc/spring-boot-mybatis-multi</module>
-        <module>spring-boot-jdbc/spring-boot-mybatis-plus</module>
-        <module>spring-boot-jdbc/spring-boot-mybatis-xml</module>
+        <module>spring-boot-sql/spring-boot-beetlsql</module>
+        <module>spring-boot-sql/spring-boot-beetlsql-2x</module>
+        <module>spring-boot-sql/spring-boot-datasource</module>
+        <module>spring-boot-sql/spring-boot-datasource-initialization</module>
+        <module>spring-boot-sql/spring-boot-jooq</module>
+        <module>spring-boot-sql/spring-boot-jpa</module>
+        <module>spring-boot-sql/spring-boot-jpa-multi</module>
+        <module>spring-boot-sql/spring-boot-mybatis-annotation</module>
+        <module>spring-boot-sql/spring-boot-mybatis-multi</module>
+        <module>spring-boot-sql/spring-boot-mybatis-plus</module>
+        <module>spring-boot-sql/spring-boot-mybatis-xml</module>
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-test</module>
