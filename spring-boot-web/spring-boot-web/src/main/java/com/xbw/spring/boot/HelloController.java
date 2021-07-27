@@ -9,9 +9,9 @@ import java.util.Locale;
 @RestController
 public class HelloController {
 
-    @RequestMapping("/hello")
+    @RequestMapping({"", "/", "/hello"})
     public String hello(Locale locale, Model model) {
-        return "Hello Spring Boot 1.x!";
+        return "Hello Spring Boot 2.x!";
     }
 
 }

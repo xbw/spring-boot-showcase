@@ -31,8 +31,8 @@
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-test</module>
-        <module>spring-boot-web</module>
-        <module>spring-boot-web-1x</module>
+        <module>spring-boot-web/spring-boot-web</module>
+        <module>spring-boot-web/spring-boot-web-1x</module>
     </modules>
 
     <properties>
