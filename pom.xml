@@ -33,6 +33,7 @@
         <module>spring-boot-test</module>
         <module>spring-boot-web/spring-boot-web</module>
         <module>spring-boot-web/spring-boot-web-1x</module>
+        <module>spring-boot-web/spring-boot-webflux</module>
     </modules>
 
     <properties>
