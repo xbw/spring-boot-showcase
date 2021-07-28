@@ -1,0 +1,12 @@
+${Ansi.CYAN}
+.__           .__  .__                  ___.
+|  |__   ____ |  | |  |   ____   ___  __\_ |____  _  __
+|  |  \_/ __ \|  | |  |  /  _ \  \  \/  /| __ \ \/ \/ /
+|   Y  \  ___/|  |_|  |_(  <_> )  >    < | \_\ \     /
+|___|  /\___  >____/____/\____/  /__/\_ \|___  /\/\_/
+     \/     \/                         \/    \/
+${AnsiStyle.BOLD}
+ :: OS          :: ${os.name} ${sun.os.patch.level} (v${os.version})
+ :: Java        :: ${java.runtime.version} (v${java.class.version})
+ :: Spring Boot :: ${spring-boot.version}${spring-boot.formatted-version}
+${Ansi.DEFAULT}
