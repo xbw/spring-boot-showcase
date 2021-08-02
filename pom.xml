@@ -20,6 +20,7 @@
         <module>spring-boot-cache/spring-boot-jcache</module>
         <module>spring-boot-cache/spring-boot-memcached</module>
         <module>spring-boot-cache/spring-boot-redis</module>
+        <module>spring-boot-cmp/spring-boot-spy</module>
         <module>spring-boot-converter/spring-boot-converter</module>
         <module>spring-boot-converter/spring-boot-json</module>
         <module>spring-boot-sql/spring-boot-beetlsql</module>

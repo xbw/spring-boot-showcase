@@ -1,0 +1,10 @@
+#debug: true
+spring:
+  profiles:
+    active: h2
+# H2
+  datasource:
+    username: sa
+    password:
+    schema: classpath:schema.sql
+    data: classpath:data.sql

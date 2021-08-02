@@ -1,0 +1,21 @@
+# H2
+spring:
+  datasource:
+    driver-class-name: net.sf.log4jdbc.DriverSpy
+    url: jdbc:log4jdbc:h2:mem:test
+
+#com.xbw.spring.boot.logging:
+#  level:
+#    jdbc.connection: OFF
+#    jdbc.audit: OFF
+#    jdbc.sqlonly: INFO
+#    jdbc.sqltiming: OFF # include executed times
+#    jdbc.resultset: OFF
+logging:
+  level:
+    jdbc:
+      connection: OFF
+      audit: OFF
+      sqlonly: INFO
+      sqltiming: OFF # include executed times
+      resultset: OFF
