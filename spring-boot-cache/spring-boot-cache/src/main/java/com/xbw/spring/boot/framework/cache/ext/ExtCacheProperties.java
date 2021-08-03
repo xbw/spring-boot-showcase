@@ -28,8 +28,8 @@ public class ExtCacheProperties {
         return this.type;
     }
 
-    public void setType(ExtCacheType mode) {
-        this.type = mode;
+    public void setType(ExtCacheType type) {
+        this.type = type;
     }
 
     public List<String> getCacheNames() {
