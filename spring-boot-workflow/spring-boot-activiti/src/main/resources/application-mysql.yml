@@ -1,0 +1,14 @@
+# MySQL
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/activiti
+    username: root
+    password:
+    hikari:
+      data-source-properties:
+        - useUnicode: true
+        - characterEncoding: utf8
+        - serverTimezone: UTC
+        - useSSL: false
+        - nullCatalogMeansCurrent: true

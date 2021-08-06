@@ -1,0 +1,13 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+  activiti:
+    database-schema-update: false
+    check-process-definitions: false
+    #process-definition-location-prefix: "classpath:/processes/"
+    processDefinitionLocationSuffixes:
+      - "*.bpmn20.xml"
+      - "*.bpmn"
+    async-executor-enabled: false
+    job-executor-activate: false
