@@ -5,12 +5,12 @@ import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
-@ConditionalOnClass(name = {"org.activiti.rest.editor.model.ModelEditorJsonRestResource", "org.springframework.web.servlet.DispatcherServlet"})
-public class ModelerAutoConfiguration {
+@ConditionalOnClass(name = {"org.activiti.rest.diagram.services.ProcessDefinitionDiagramLayoutResource", "org.springframework.web.servlet.DispatcherServlet"})
+public class DiagramAutoConfiguration {
 
     @Configuration
-    @ComponentScan({"org.activiti.rest.editor"})
-    public static class ComponentModelerResourcesConfiguration {
+    @ComponentScan({"org.activiti.rest.diagram.services"})
+    public static class ComponentDiagramResourcesConfiguration {
 
         // The component scan cannot be on the root configuration, it would trigger
         // always even if the condition is evaluating to false.

@@ -5,7 +5,7 @@ var ActivitiRest = {
 		
 		$.ajax({
 			url: url,
-			dataType: 'jsonp',
+			//dataType: 'jsonp',
 			cache: false,
 			async: true,
 			success: function(data, textStatus) {
@@ -22,13 +22,13 @@ var ActivitiRest = {
 			console.error('Get diagram layout['+processDefinitionKey+'] failure: ', textStatus, 'error: ', error, jqXHR);
 		});
 	},
-	
+
 	getProcessDefinition: function(processDefinitionId, callback) {
 		var url = Lang.sub(this.options.processDefinitionUrl, {processDefinitionId: processDefinitionId});
-		
+
 		$.ajax({
 			url: url,
-			dataType: 'jsonp',
+			//dataType: 'jsonp',
 			cache: false,
 			async: true,
 			success: function(data, textStatus) {
@@ -46,13 +46,13 @@ var ActivitiRest = {
 			console.log('Get diagram layout['+processDefinitionId+'] failure: ', textStatus, jqXHR);
 		});
 	},
-	
+
 	getHighLights: function(processInstanceId, callback) {
 		var url = Lang.sub(this.options.processInstanceHighLightsUrl, {processInstanceId: processInstanceId});
-		
+
 		$.ajax({
 			url: url,
-			dataType: 'jsonp',
+			//dataType: 'jsonp',
 			cache: false,
 			async: true,
 			success: function(data, textStatus) {
