@@ -1,0 +1,7 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+  activiti:
+    database-schema-update: true
+    #deployment-mode: single-resource # default,single-resource,resource-parent-folder
