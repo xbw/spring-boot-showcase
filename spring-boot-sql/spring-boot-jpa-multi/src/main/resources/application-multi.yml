@@ -5,19 +5,19 @@ spring:
 #      - org.springframework.boot.autoconfigure.jdbc.DataSourceAutoConfiguration
   datasource:
     driver-class-name: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
     username: root
     password:
     jdbc-url: ${spring.datasource.url}
     primary:
       driver-class-name: ${spring.datasource.driver-class-name}
-      url: jdbc:mysql://localhost:3306/springboot-primary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      url: jdbc:mysql://localhost:3306/springboot-primary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
       username: ${spring.datasource.username}
       password: ${spring.datasource.password}
       jdbc-url: ${spring.datasource.primary.url}
     secondary:
       driver-class-name: ${spring.datasource.driver-class-name}
-      url: jdbc:mysql://localhost:3306/springboot-secondary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      url: jdbc:mysql://localhost:3306/springboot-secondary?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
       username: ${spring.datasource.username}
       password: ${spring.datasource.password}
       jdbc-url: ${spring.datasource.secondary.url}

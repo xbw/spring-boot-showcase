@@ -3,12 +3,12 @@ spring:
   datasource:
     master:
       driver-class-name: com.mysql.cj.jdbc.Driver
-      jdbc-url: jdbc:mysql://localhost:3306/springboot-master?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-master?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
       username: root
       password:
     slave:
       driver-class-name: ${spring.datasource.master.driver-class-name}
-      jdbc-url: jdbc:mysql://localhost:3306/springboot-slave?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false
+      jdbc-url: jdbc:mysql://localhost:3306/springboot-slave?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
       username: ${spring.datasource.master.username}
       password: ${spring.datasource.master.password}
 
