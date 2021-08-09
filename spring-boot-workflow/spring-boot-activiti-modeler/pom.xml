@@ -12,6 +12,15 @@
     <version>1.0.0</version>
     <name>${project.artifactId}</name>
 
+    <!-- com.github.jgraph:jgraphx:v3.9.10 -->
+    <repositories>
+        <repository>
+            <id>alfresco</id>
+            <name>Alfresco Repository</name>
+            <url>https://artifacts.alfresco.com/nexus/content/repositories/public/</url>
+        </repository>
+    </repositories>
+
     <properties>
         <activiti.version>5.23.0</activiti.version>
     </properties>
