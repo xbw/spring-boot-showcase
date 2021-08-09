@@ -1,0 +1,21 @@
+#debug: true
+spring:
+  profiles:
+    active: h2
+flowable:
+  database-schema-update: false
+  check-process-definitions: false
+  #process-definition-location-prefix: "classpath:/processes/"
+  processDefinitionLocationSuffixes:
+    - "*.bpmn20.xml"
+    - "*.bpmn"
+  cmmn:
+    async:
+      executor:
+        async-job-acquisition-enabled: false
+        timer-job-acquisition-enabled: false
+  process:
+    async-history:
+      executor:
+        async-job-acquisition-enabled: false
+        timer-job-acquisition-enabled: false
