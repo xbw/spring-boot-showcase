@@ -1,0 +1,4 @@
+*.css linguist-language=Java
+*.html linguist-language=Java
+*.js linguist-language=Java
+spring-boot-workflow/* linguist-language=Java
