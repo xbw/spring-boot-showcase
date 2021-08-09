@@ -42,6 +42,7 @@
         <module>spring-boot-web/spring-boot-webflux</module>
         <module>spring-boot-workflow/spring-boot-activiti</module>
         <module>spring-boot-workflow/spring-boot-activiti6</module>
+        <module>spring-boot-workflow/spring-boot-activiti7</module>
         <module>spring-boot-workflow/spring-boot-activiti-modeler</module>
     </modules>
 

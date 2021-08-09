@@ -1,0 +1,13 @@
+#debug: true
+spring:
+  profiles:
+    active: h2
+  activiti:
+    database-schema-update: true
+    check-process-definitions: false
+    #process-definition-location-prefix: "classpath:/processes/"
+    processDefinitionLocationSuffixes:
+      - "*.bpmn20.xml"
+      - "*.bpmn"
+    async-executor-activate: false
+
