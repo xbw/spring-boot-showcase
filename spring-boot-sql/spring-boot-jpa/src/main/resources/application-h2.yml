@@ -4,7 +4,7 @@ spring:
     driver-class-name: org.h2.Driver
 #    url: jdbc:h2:mem:test
 #    url: jdbc:h2:~/.h2/test
-    url: jdbc:h2:file:./database/h2/h2_db
+    url: jdbc:h2:file:./database/h2/h2_db;DB_CLOSE_DELAY=-1;DB_CLOSE_ON_EXIT=FALSE;AUTO_SERVER=TRUE;
     username: sa
     password:
   h2:
