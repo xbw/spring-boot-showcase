@@ -1,0 +1,9 @@
+#debug: true
+spring:
+  profiles:
+    active: mysql
+snaker:
+  flow:
+    db-access-type: spring
+    enable-surrogate: false
+    expression-type: spel

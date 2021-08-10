@@ -45,6 +45,7 @@
         <module>spring-boot-workflow/spring-boot-activiti7</module>
         <module>spring-boot-workflow/spring-boot-activiti-modeler</module>
         <module>spring-boot-workflow/spring-boot-flowable</module>
+        <module>spring-boot-workflow/spring-boot-snakerflow</module>
     </modules>
 
     <properties>
