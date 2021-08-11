@@ -1,0 +1,25 @@
+#debug: true
+spring:
+  profiles:
+    active: h2
+camunda:
+  bpm:
+    admin-user:
+      id: admin
+      first-name: first-name
+      last-name: last-name
+      password: admin
+    filter:
+      create: All Tasks
+    auto-deployment-enabled: true
+    deployment-resource-pattern:
+      - classpath:/processes/*.*
+      #- classpath:/processes/bpmn/*.bpmn20.xml
+      #- classpath:/processes/bpmn/*.bpmn
+      #- classpath:/processes/cmmn/*.cmmn10.xml
+      #- classpath:/processes/cmmn/*.cmmn11.xml
+      #- classpath:/processes/cmmn/*.cmmn
+      #- classpath:/processes/dmn/*.dmn11.xml
+      #- classpath:/processes/dmn/*.dmn
+    job-execution:
+      enabled: false
