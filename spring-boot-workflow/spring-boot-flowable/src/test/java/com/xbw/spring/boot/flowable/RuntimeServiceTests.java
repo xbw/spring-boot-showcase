@@ -26,7 +26,6 @@ class RuntimeServiceTests {
         //ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(ActivitiTests.processDefinitionKey);
         ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(FlowableTests.PROCESS_DEFINITION_KEY, variables);
 
-
         System.out.printf("ProcessDefinitionId: %s, ProcessDefinitionKey: %s%n", processInstance.getProcessDefinitionId(), processInstance.getProcessDefinitionKey());
         //ProcessDefinitionId: oneTaskProcess:1:5003, ProcessDefinitionKey: oneTaskProcess
     }

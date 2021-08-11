@@ -1,7 +1,7 @@
 #debug: true
 spring:
   profiles:
-    active: mysql
+    active: h2
   activiti:
     database-schema-update: true
     check-process-definitions: false
