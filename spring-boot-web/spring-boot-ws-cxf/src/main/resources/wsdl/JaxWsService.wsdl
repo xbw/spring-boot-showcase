@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+                  xmlns:tns="http://jaxws.project.boot.spring.xbw.com"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  name="JaxWsService" targetNamespace="http://jaxws.project.boot.spring.xbw.com">
+    <wsdl:types>
+        <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                   xmlns:tns="http://jaxws.project.boot.spring.xbw.com"
+                   targetNamespace="http://jaxws.project.boot.spring.xbw.com" version="1.0">
+            <xs:element name="sayHello" type="tns:sayHello"/>
+            <xs:element name="sayHelloResponse" type="tns:sayHelloResponse"/>
+            <xs:complexType name="sayHello">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="text" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+            <xs:complexType name="sayHelloResponse">
+                <xs:sequence>
+                    <xs:element minOccurs="0" name="return" type="xs:string"/>
+                </xs:sequence>
+            </xs:complexType>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sayHello">
+        <wsdl:part element="tns:sayHello" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part element="tns:sayHelloResponse" name="parameters">
+        </wsdl:part>
+    </wsdl:message>
+    <wsdl:portType name="JaxWsService">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="tns:sayHello" name="sayHello">
+            </wsdl:input>
+            <wsdl:output message="tns:sayHelloResponse" name="sayHelloResponse">
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="JaxWsServiceSoapBinding" type="tns:JaxWsService">
+        <soap:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHello">
+            <soap:operation soapAction="sayHello" style="document"/>
+            <wsdl:input name="sayHello">
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sayHelloResponse">
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="JaxWsServiceSoapBinding12" type="tns:JaxWsService">
+        <soap12:binding style="document" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="sayHello">
+            <soap12:operation soapAction="sayHello" style="document"/>
+            <wsdl:input name="sayHello">
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output name="sayHelloResponse">
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="JaxWsService">
+        <wsdl:port binding="tns:JaxWsServiceSoapBinding" name="JaxWsServiceSoap">
+            <soap:address location="http://localhost:8080/services/jax-ws-service"/>
+        </wsdl:port>
+        <wsdl:port binding="tns:JaxWsServiceSoapBinding12" name="JaxWsServiceSoap12">
+            <soap12:address location="http://localhost:8080/services/jax-ws-service"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
