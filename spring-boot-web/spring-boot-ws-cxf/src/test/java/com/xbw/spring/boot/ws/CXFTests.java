@@ -3,6 +3,9 @@ package com.xbw.spring.boot.ws;
 import com.xbw.spring.boot.framework.config.JaxWsConfig;
 import com.xbw.spring.boot.project.jaxws.JaxWsService;
 import org.apache.cxf.endpoint.Client;
+import org.apache.cxf.jaxrs.client.WebClient;
+import org.apache.cxf.jaxrs.client.spring.EnableJaxRsProxyClient;
+import org.apache.cxf.jaxrs.client.spring.EnableJaxRsWebClient;
 import org.apache.cxf.jaxws.JaxWsProxyFactoryBean;
 import org.apache.cxf.jaxws.endpoint.dynamic.JaxWsDynamicClientFactory;
 import org.junit.jupiter.api.Assertions;
@@ -15,6 +18,8 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @see org.apache.cxf.jaxrs.client.spring.JaxRsWebClientConfiguration;
  * @see org.apache.cxf.jaxrs.client.spring.JaxRsProxyClientConfiguration;
  */
+@EnableJaxRsWebClient
+@EnableJaxRsProxyClient
 @SpringBootTest
 class CXFTests {
     @Autowired
@@ -23,6 +28,9 @@ class CXFTests {
     JaxWsProxyFactoryBean jaxWsProxyFactory;
     @Autowired
     JaxWsDynamicClientFactory dynamicClientFactory;
+
+    @Autowired
+    WebClient webClient;
 
     @Test
     void proxyService() {
@@ -44,5 +52,10 @@ class CXFTests {
 
         Assertions.assertEquals("Hello DynamicClientFactory", obj[0]);
         System.out.println(obj[0]);
+    }
+
+    @Test
+    void jaxRs() {
+        Assertions.assertEquals("Hello Apache CXF WebClient", webClient.path("sayHello/Apache CXF WebClient").get(String.class));
     }
 }

@@ -12,7 +12,7 @@ import javax.xml.ws.soap.SOAPBinding;
         serviceName = "JaxWsService",
         portName = "JaxWsServiceSoap",
         endpointInterface = "com.xbw.spring.boot.project.jaxws.JaxWsService",
-        targetNamespace = "http://jaxws.project.boot.spring.xbw.com/"/*,
+        targetNamespace = "http://jaxws.project.boot.spring.xbw.com"/*,
         wsdlLocation = "wsdl/JaxWsService.wsdl"*/
 )
 @BindingType(SOAPBinding.SOAP11HTTP_MTOM_BINDING)
