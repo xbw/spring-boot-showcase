@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<serviceGroup>
+    <parameter name="disableREST" locked="false">false</parameter>
+    <parameter name="disableSOAP11" locked="true">false</parameter>
+    <!-- The disableSOAP12 parameter is locked at the top level and cannot be overridden. -->
+    <!--<parameter name="disableSOAP12" locked="true">true</parameter>-->
+
+    <service name="HelloService">
+        <description>Simple Spring Example</description>
+        <parameter name="ServiceObjectSupplier">
+            org.apache.axis2.extensions.spring.receivers.SpringServletContextObjectSupplier
+        </parameter>
+        <parameter name="ServiceClass" locked="false">com.xbw.spring.boot.project.axis.HelloService</parameter>
+        <parameter name="SpringBeanName">helloService</parameter>
+    </service>
+
+    <service name="WeatherService" scope="application">
+        <description>Weather POJO Service</description>
+        <parameter name="ServiceClass">com.xbw.spring.boot.project.pojo.WeatherService</parameter>
+    </service>
+
+
+    <service name="POJOService" scope="application" targetNamespace="http://quickstart.samples/">
+        <description>
+            POJO Service
+        </description>
+        <messageReceivers>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-only"
+                             class="org.apache.axis2.rpc.receivers.RPCInOnlyMessageReceiver"/>
+            <messageReceiver mep="http://www.w3.org/ns/wsdl/in-out"
+                             class="org.apache.axis2.rpc.receivers.RPCMessageReceiver"/>
+        </messageReceivers>
+        <schema schemaNamespace="http://quickstart.samples/xsd"/>
+        <parameter name="ServiceClass">com.xbw.spring.boot.project.guide.POJOService</parameter>
+    </service>
+
+    <service name="AxiomService" scope="application">
+        <description>
+            Stock Quote Service
+        </description>
+        <operation name="getPrice">
+            <messageReceiver class="org.apache.axis2.receivers.RawXMLINOutMessageReceiver"/>
+        </operation>
+        <operation name="update">
+            <messageReceiver class="org.apache.axis2.receivers.RawXMLINOnlyMessageReceiver"/>
+        </operation>
+        <parameter name="ServiceClass">com.xbw.spring.boot.project.guide.AxiomService</parameter>
+    </service>
+
+</serviceGroup>

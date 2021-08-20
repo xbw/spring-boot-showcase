@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://axis.project.boot.spring.xbw.com"
+                  xmlns:xs="http://www.w3.org/2001/XMLSchema"
+                  xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+                  xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+                  xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl"
+                  targetNamespace="http://axis.project.boot.spring.xbw.com">
+    <wsdl:documentation>Simple Spring Example</wsdl:documentation>
+    <wsdl:types>
+        <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified"
+                   targetNamespace="http://axis.project.boot.spring.xbw.com">
+            <xs:element name="sayHello">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="text" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+            <xs:element name="sayHelloResponse">
+                <xs:complexType>
+                    <xs:sequence>
+                        <xs:element minOccurs="0" name="return" nillable="true" type="xs:string"/>
+                    </xs:sequence>
+                </xs:complexType>
+            </xs:element>
+        </xs:schema>
+    </wsdl:types>
+    <wsdl:message name="sayHelloRequest">
+        <wsdl:part name="parameters" element="ns:sayHello"/>
+    </wsdl:message>
+    <wsdl:message name="sayHelloResponse">
+        <wsdl:part name="parameters" element="ns:sayHelloResponse"/>
+    </wsdl:message>
+    <wsdl:portType name="HelloServicePortType">
+        <wsdl:operation name="sayHello">
+            <wsdl:input message="ns:sayHelloRequest" wsaw:Action="urn:sayHello"/>
+            <wsdl:output message="ns:sayHelloResponse" wsaw:Action="urn:sayHelloResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="HelloServiceSoap11Binding" type="ns:HelloServicePortType">
+        <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="sayHello">
+            <soap:operation soapAction="urn:sayHello" style="document"/>
+            <wsdl:input>
+                <soap:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HelloServiceSoap12Binding" type="ns:HelloServicePortType">
+        <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+        <wsdl:operation name="sayHello">
+            <soap12:operation soapAction="urn:sayHello" style="document"/>
+            <wsdl:input>
+                <soap12:body use="literal"/>
+            </wsdl:input>
+            <wsdl:output>
+                <soap12:body use="literal"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:binding name="HelloServiceHttpBinding" type="ns:HelloServicePortType">
+        <http:binding verb="POST"/>
+        <wsdl:operation name="sayHello">
+            <http:operation location="sayHello"/>
+            <wsdl:input>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:input>
+            <wsdl:output>
+                <mime:content type="application/xml" part="parameters"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="HelloService">
+        <wsdl:port name="HelloServiceHttpSoap11Endpoint" binding="ns:HelloServiceSoap11Binding">
+            <soap:address location="http://localhost:8080/services/HelloService.HelloServiceHttpSoap11Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HelloServiceHttpSoap12Endpoint" binding="ns:HelloServiceSoap12Binding">
+            <soap12:address location="http://localhost:8080/services/HelloService.HelloServiceHttpSoap12Endpoint/"/>
+        </wsdl:port>
+        <wsdl:port name="HelloServiceHttpEndpoint" binding="ns:HelloServiceHttpBinding">
+            <http:address location="http://localhost:8080/services/HelloService.HelloServiceHttpEndpoint/"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
