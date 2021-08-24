@@ -1,14 +1,22 @@
 package com.xbw.spring.boot.ws;
 
 import com.xbw.spring.boot.framework.util.HttpSoapUtil;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.boot.test.web.client.TestRestTemplate;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 
 /**
  * @author xbw
  */
-@SpringBootTest
+@SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class WSTests {
+
+    @Autowired
+    private TestRestTemplate restTemplate;
 
     @Test
     void sayHello() {
@@ -38,5 +46,12 @@ public class WSTests {
         xml.append("   </soapenv:Body>");
         xml.append("</soapenv:Envelope>");
         HttpSoapUtil.getSoap11(url, xml.toString(), "sch:getCountryRequest");
+    }
+
+    @Test
+    public void jersey() {
+        ResponseEntity<String> entity = this.restTemplate.getForEntity("/jersey",String.class);
+        Assertions.assertEquals(entity.getStatusCode(),HttpStatus.OK);
+        Assertions.assertEquals(entity.getBody(),"Jersey");
     }
 }
