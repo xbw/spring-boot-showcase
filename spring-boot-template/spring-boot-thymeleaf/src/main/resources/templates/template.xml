@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persons >
+    <person>
+        <firstname th:text="${values['firstname']}"></firstname>
+        <lastname th:text="${values['lastname']}"></lastname>
+        <country th:text="${values['country']}"></country>
+    </person>
+    <node th:each="value,stat: ${values}" th:text="${value}"/>
+</persons>

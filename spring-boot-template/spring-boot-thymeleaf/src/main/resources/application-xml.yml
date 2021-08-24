@@ -1,0 +1,14 @@
+#Thymeleaf
+spring:
+  thymeleaf:
+    cache: false
+    # Cannot find template location: classpath:/templates/ (please add some templates or check your Thymeleaf configuration)
+    check-template-location: false
+    #enabled: true
+    #encoding: UTF-8
+    mode: XML
+    #prefix: classpath:/templates/
+    servlet:
+      #content-type: text/xml
+      content-type: application/xml
+    suffix: .xml
