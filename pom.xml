@@ -42,6 +42,7 @@
         <module>spring-boot-web/spring-boot-web-1x</module>
         <module>spring-boot-web/spring-boot-web-jsp</module>
         <module>spring-boot-web/spring-boot-webflux</module>
+        <module>spring-boot-web/spring-boot-ws</module>
         <module>spring-boot-web/spring-boot-ws-axis</module>
         <module>spring-boot-web/spring-boot-ws-cxf</module>
         <module>spring-boot-workflow/spring-boot-activiti</module>
