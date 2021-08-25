@@ -9,6 +9,7 @@ import org.springframework.cache.support.SimpleValueWrapper;
 import java.io.IOException;
 import java.util.concurrent.Callable;
 
+@SuppressWarnings("unchecked")
 public class JCSCache implements Cache {
 
     private final CompositeCache cache;
@@ -34,7 +35,6 @@ public class JCSCache implements Cache {
     }
 
     @Override
-    @SuppressWarnings("unchecked")
     public <T> T get(Object key, Class<T> type) {
         ICacheElement element = this.cache.get(key);
         Object value = (element != null ? element.getVal() : null);
@@ -44,7 +44,6 @@ public class JCSCache implements Cache {
         return (T) value;
     }
 
-    @SuppressWarnings("unchecked")
     @Override
     public <T> T get(Object key, Callable<T> valueLoader) {
         ICacheElement element = this.cache.get(key);

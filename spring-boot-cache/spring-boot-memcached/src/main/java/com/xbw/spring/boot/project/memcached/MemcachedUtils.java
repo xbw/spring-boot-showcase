@@ -10,7 +10,7 @@ import java.util.List;
 /**
  * @author xbw
  */
-@SuppressWarnings({"unchecked", "unused"})
+@SuppressWarnings("unchecked")
 @Deprecated
 public class MemcachedUtils {
     private static final Logger logger = LoggerFactory.getLogger(MemcachedUtils.class);

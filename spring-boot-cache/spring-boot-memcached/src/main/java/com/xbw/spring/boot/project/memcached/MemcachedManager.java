@@ -7,6 +7,7 @@ import com.whalin.MemCached.SockIOPool;
  * @author xbw
  */
 @Deprecated
+@SuppressWarnings("unchecked")
 public class MemcachedManager {
 
     private static MemcachedManager instance;

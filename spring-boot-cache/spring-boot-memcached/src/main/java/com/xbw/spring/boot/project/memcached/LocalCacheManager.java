@@ -15,7 +15,7 @@ public class LocalCacheManager {
 
     private static final Logger logger = LoggerFactory.getLogger(LocalCacheManager.class);
 
-    private static Map<String, List<?>> map = new ConcurrentHashMap<String, List<?>>();// 缓存容器
+    private static Map<String, List<?>> map = new ConcurrentHashMap<>();// 缓存容器
     private volatile static LocalCacheManager localCacheManager;// 缓存实例对象
     private static MemcachedManager memcachedManager;
     private volatile long updateTime;// 更新缓存时记录的时间
@@ -51,7 +51,7 @@ public class LocalCacheManager {
         /********** 数据处理，将数据放入cacheMap缓存中 **begin ******/
         try {
             if (null != memcachedManager.get("default")) {
-                map.put("default", (List<?>) memcachedManager.get("default"));
+                map.put("default", memcachedManager.get("default"));
             }
         } finally {
             update = false;// 更新已完成
@@ -65,7 +65,6 @@ public class LocalCacheManager {
      *
      * @return
      */
-    @SuppressWarnings("rawtypes")
     public List getLocalCache(String key) {
         long currentTime = System.currentTimeMillis();
 

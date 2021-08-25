@@ -47,6 +47,7 @@ public class DataSourceConfigurerByDataSourceProperties {
         logger.debug("DataSourceConfigurerByDataSourceProperties: url -> {}, username -> {}, password -> {}, driverClassName -> {}", url, username, password, driverClassName);
     }
 
+    @SuppressWarnings("unchecked")
     private <T> T createDataSource(DataSourceProperties properties, Class<? extends DataSource> type) {
         return (T) properties.initializeDataSourceBuilder().type(type).build();
     }
