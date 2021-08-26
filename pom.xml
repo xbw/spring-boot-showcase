@@ -38,6 +38,7 @@
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-template/spring-boot-freemarker</module>
+        <module>spring-boot-template/spring-boot-groovy</module>
         <module>spring-boot-template/spring-boot-thymeleaf</module>
         <module>spring-boot-template/spring-boot-velocity</module>
         <module>spring-boot-test</module>
