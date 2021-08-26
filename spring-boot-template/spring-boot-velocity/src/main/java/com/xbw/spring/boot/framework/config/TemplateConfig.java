@@ -1,10 +1,10 @@
 package com.xbw.spring.boot.framework.config;
 
 import org.apache.velocity.app.VelocityEngine;
+import org.apache.velocity.spring.VelocityEngineFactory;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.ui.velocity.VelocityEngineFactory;
 
 /**
  * https://www.baeldung.com/spring-template-engines

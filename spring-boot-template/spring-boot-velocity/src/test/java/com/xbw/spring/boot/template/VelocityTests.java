@@ -35,6 +35,7 @@ public class VelocityTests {
 
     @Test
     void template() {
+        //Velocity.init("src/main/resources/velocity.properties");
         Template template = engine.getTemplate("templates/template.vm");
         writer(template);
     }
@@ -45,8 +46,8 @@ public class VelocityTests {
         writer(template);
     }
 
-    private Map<String, String> initMap() {
-        Map<String, String> map = new HashMap<>();
+    private Map<String, Object> initMap() {
+        Map<String, Object> map = new HashMap<>();
         map.put("firstname", "First Name");
         map.put("lastname", "Last Name");
         map.put("country", "Country");

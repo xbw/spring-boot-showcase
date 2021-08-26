@@ -16,25 +16,16 @@
 
 package org.springframework.boot.autoconfigure.velocity;
 
-import java.io.IOException;
-import java.util.Properties;
-
-import javax.annotation.PostConstruct;
-import javax.servlet.Servlet;
-
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.apache.velocity.app.VelocityEngine;
 import org.apache.velocity.exception.VelocityException;
-
+import org.apache.velocity.spring.VelocityEngineFactory;
+import org.apache.velocity.spring.VelocityEngineFactoryBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureAfter;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnClass;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnNotWebApplication;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnWebApplication;
+import org.springframework.boot.autoconfigure.condition.*;
 import org.springframework.boot.autoconfigure.template.TemplateLocation;
 import org.springframework.boot.autoconfigure.web.ConditionalOnEnabledResourceChain;
 import org.springframework.boot.autoconfigure.web.servlet.WebMvcAutoConfiguration;
@@ -43,11 +34,14 @@ import org.springframework.boot.web.servlet.view.velocity.EmbeddedVelocityViewRe
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.ui.velocity.VelocityEngineFactory;
-import org.springframework.ui.velocity.VelocityEngineFactoryBean;
 import org.springframework.web.servlet.resource.ResourceUrlEncodingFilter;
 import org.springframework.web.servlet.view.velocity.VelocityConfig;
 import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
+
+import javax.annotation.PostConstruct;
+import javax.servlet.Servlet;
+import java.io.IOException;
+import java.util.Properties;
 
 /**
  * {@link EnableAutoConfiguration Auto-configuration} for Velocity.
@@ -55,14 +49,11 @@ import org.springframework.web.servlet.view.velocity.VelocityConfigurer;
  * @author Andy Wilkinson
  * @author Brian Clozel
  * @since 1.1.0
- * @deprecated as of 1.4 following the deprecation of Velocity support in Spring Framework
- * 4.3
  */
 @Configuration
 @ConditionalOnClass({ VelocityEngine.class, VelocityEngineFactory.class })
 @AutoConfigureAfter(WebMvcAutoConfiguration.class)
 @EnableConfigurationProperties(VelocityProperties.class)
-@Deprecated
 public class VelocityAutoConfiguration {
 
 	private static final Log logger = LogFactory.getLog(VelocityAutoConfiguration.class);
@@ -91,7 +82,6 @@ public class VelocityAutoConfiguration {
 		}
 	}
 
-	@Deprecated
 	protected static class VelocityConfiguration {
 
 		@Autowired
@@ -101,7 +91,10 @@ public class VelocityAutoConfiguration {
 			factory.setResourceLoaderPath(this.properties.getResourceLoaderPath());
 			factory.setPreferFileSystemAccess(this.properties.isPreferFileSystemAccess());
 			Properties velocityProperties = new Properties();
-			velocityProperties.setProperty("input.encoding",
+			// configuration key 'input.encoding' has been deprecated in favor of 'resource.default_encoding'
+//			velocityProperties.setProperty("input.encoding",
+//					this.properties.getCharsetName());
+			velocityProperties.setProperty("resource.default_encoding",
 					this.properties.getCharsetName());
 			velocityProperties.putAll(this.properties.getProperties());
 			factory.setVelocityProperties(velocityProperties);
@@ -111,7 +104,6 @@ public class VelocityAutoConfiguration {
 
 	@Configuration
 	@ConditionalOnNotWebApplication
-	@Deprecated
 	public static class VelocityNonWebConfiguration extends VelocityConfiguration {
 
 		@Bean
@@ -127,7 +119,6 @@ public class VelocityAutoConfiguration {
 	@Configuration
 	@ConditionalOnClass(Servlet.class)
 	@ConditionalOnWebApplication
-	@Deprecated
 	public static class VelocityWebConfiguration extends VelocityConfiguration {
 
 		@Bean

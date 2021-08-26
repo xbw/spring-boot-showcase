@@ -16,22 +16,19 @@
 
 package org.springframework.boot.autoconfigure.velocity;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.boot.autoconfigure.template.AbstractTemplateViewResolverProperties;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.web.servlet.view.velocity.VelocityViewResolver;
+
+import java.util.HashMap;
+import java.util.Map;
 
 /**
  * {@link ConfigurationProperties} for configuring Velocity.
  *
  * @author Andy Wilkinson
  * @since 1.1.0
- * @deprecated as of 1.4 following the deprecation of Velocity support in Spring Framework
- * 4.3
  */
-@Deprecated
 @ConfigurationProperties(prefix = "spring.velocity")
 public class VelocityProperties extends AbstractTemplateViewResolverProperties {
 
@@ -60,13 +57,6 @@ public class VelocityProperties extends AbstractTemplateViewResolverProperties {
 	 * Template path.
 	 */
 	private String resourceLoaderPath = DEFAULT_RESOURCE_LOADER_PATH;
-
-	/**
-	 * Velocity Toolbox config location, for example "/WEB-INF/toolbox.xml". Automatically
-	 * loads a Velocity Tools toolbox definition file and expose all defined tools in the
-	 * specified scopes.
-	 */
-	private String toolboxConfigLocation;
 
 	/**
 	 * Prefer file system access for template loading. File system access enables hot
@@ -110,14 +100,6 @@ public class VelocityProperties extends AbstractTemplateViewResolverProperties {
 		this.resourceLoaderPath = resourceLoaderPath;
 	}
 
-	public String getToolboxConfigLocation() {
-		return this.toolboxConfigLocation;
-	}
-
-	public void setToolboxConfigLocation(String toolboxConfigLocation) {
-		this.toolboxConfigLocation = toolboxConfigLocation;
-	}
-
 	public boolean isPreferFileSystemAccess() {
 		return this.preferFileSystemAccess;
 	}
@@ -130,7 +112,6 @@ public class VelocityProperties extends AbstractTemplateViewResolverProperties {
 	public void applyToMvcViewResolver(Object viewResolver) {
 		super.applyToMvcViewResolver(viewResolver);
 		VelocityViewResolver resolver = (VelocityViewResolver) viewResolver;
-		resolver.setToolboxConfigLocation(getToolboxConfigLocation());
 		resolver.setDateToolAttribute(getDateToolAttribute());
 		resolver.setNumberToolAttribute(getNumberToolAttribute());
 	}

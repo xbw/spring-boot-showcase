@@ -40,16 +40,12 @@ import org.springframework.web.servlet.view.AbstractUrlBasedView;
  * @see #setDateToolAttribute
  * @see #setNumberToolAttribute
  * @see VelocityView
- * @deprecated as of Spring 4.3, in favor of FreeMarker
  */
-@Deprecated
 public class VelocityViewResolver extends AbstractTemplateViewResolver {
 
 	private String dateToolAttribute;
 
 	private String numberToolAttribute;
-
-	private String toolboxConfigLocation;
 
 
 	public VelocityViewResolver() {
@@ -85,41 +81,10 @@ public class VelocityViewResolver extends AbstractTemplateViewResolver {
 		this.numberToolAttribute = numberToolAttribute;
 	}
 
-	/**
-	 * Set a Velocity Toolbox config location, for example "/WEB-INF/toolbox.xml",
-	 * to automatically load a Velocity Tools toolbox definition file and expose
-	 * all defined tools in the specified scopes. If no config location is
-	 * specified, no toolbox will be loaded and exposed.
-	 * <p>The specified location string needs to refer to a ServletContext
-	 * resource, as expected by ServletToolboxManager which is part of
-	 * the view package of Velocity Tools.
-	 * <p><b>Note:</b> Specifying a toolbox config location will lead to
-	 * VelocityToolboxView instances being created.
-	 * @see org.apache.velocity.tools.view.servlet.ServletToolboxManager#getInstance
-	 * @see VelocityToolboxView#setToolboxConfigLocation
-	 */
-	public void setToolboxConfigLocation(String toolboxConfigLocation) {
-		this.toolboxConfigLocation = toolboxConfigLocation;
-	}
-
 
 	@Override
 	protected void initApplicationContext() {
 		super.initApplicationContext();
-
-		if (this.toolboxConfigLocation != null) {
-			if (VelocityView.class == getViewClass()) {
-				logger.info("Using VelocityToolboxView instead of default VelocityView " +
-						"due to specified toolboxConfigLocation");
-				setViewClass(VelocityToolboxView.class);
-			}
-			else if (!VelocityToolboxView.class.isAssignableFrom(getViewClass())) {
-				throw new IllegalArgumentException(
-						"Given view class [" + getViewClass().getName() +
-						"] is not of type [" + VelocityToolboxView.class.getName() +
-						"], which it needs to be in case of a specified toolboxConfigLocation");
-			}
-		}
 	}
 
 
@@ -128,9 +93,6 @@ public class VelocityViewResolver extends AbstractTemplateViewResolver {
 		VelocityView view = (VelocityView) super.buildView(viewName);
 		view.setDateToolAttribute(this.dateToolAttribute);
 		view.setNumberToolAttribute(this.numberToolAttribute);
-		if (this.toolboxConfigLocation != null) {
-			((VelocityToolboxView) view).setToolboxConfigLocation(this.toolboxConfigLocation);
-		}
 		return view;
 	}
 
