@@ -1,8 +1,9 @@
 package com.xbw.spring.boot.template;
 
-import freemarker.template.Configuration;
-import freemarker.template.Template;
-import freemarker.template.TemplateException;
+import org.apache.velocity.Template;
+import org.apache.velocity.VelocityContext;
+import org.apache.velocity.app.Velocity;
+import org.apache.velocity.app.VelocityEngine;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,9 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-    import org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer;
 
-import java.io.IOException;
 import java.io.StringWriter;
 import java.util.HashMap;
 import java.util.Map;
@@ -21,11 +20,9 @@ import java.util.Map;
  * @author xbw
  */
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-public class FreeMarkerTests {
+public class VelocityTests {
     @Autowired
-    FreeMarkerConfigurer configurer;
-    @Autowired
-    freemarker.template.Configuration configuration;
+    VelocityEngine engine;
     @Autowired
     private TestRestTemplate restTemplate;
 
@@ -37,23 +34,14 @@ public class FreeMarkerTests {
     }
 
     @Test
-    void freeMarkerConfigurer() throws IOException, TemplateException {
-        Configuration configuration = configurer.getConfiguration();
-        Template template = configuration.getTemplate("template.ftl");
+    void template() {
+        Template template = engine.getTemplate("templates/template.vm");
         writer(template);
     }
 
     @Test
-    void configuration() throws IOException, TemplateException {
-        Template template = configuration.getTemplate("template.ftl");
-        writer(template);
-    }
-
-    @Test
-    void template() throws IOException, TemplateException {
-        Configuration configuration = new Configuration(Configuration.VERSION_2_3_31);
-        configuration.setClassForTemplateLoading(this.getClass(), "/");
-        Template template = configuration.getTemplate("templates/template.ftl");
+    void velocity() {
+        Template template = Velocity.getTemplate("src/main/resources/templates/template.vm");
         writer(template);
     }
 
@@ -65,9 +53,10 @@ public class FreeMarkerTests {
         return map;
     }
 
-    private void writer(Template template) throws TemplateException, IOException {
+    private void writer(Template template) {
+        VelocityContext context = new VelocityContext(initMap());
         StringWriter writer = new StringWriter();
-        template.process(initMap(), writer);
+        template.merge(context, writer);
         System.out.println(writer);
     }
 }
