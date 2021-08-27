@@ -1,0 +1,44 @@
+spring:
+  task:
+    execution:
+      pool:
+        core-size: 10
+      shutdown:
+        await-termination: true
+        await-termination-period: 60s
+      #thread-name-prefix: task-
+    scheduling:
+      pool:
+        size: 10
+      shutdown:
+        await-termination: true
+        await-termination-period: 60s
+      #thread-name-prefix: scheduling-
+  quartz:
+    auto-startup: true
+    jdbc:
+      initialize-schema: always
+      #schema: classpath:org/quartz/impl/jdbcjobstore/tables_mysql_innodb.sql
+    job-store-type: memory
+    overwrite-existing-jobs: true
+    properties:
+      org:
+        quartz:
+          #jobStore:
+          #  class: org.quartz.impl.jdbcjobstore.JobStoreTX
+          #  driverDelegateClass: org.quartz.impl.jdbcjobstore.StdJDBCDelegate
+          #  tablePrefix: QRTZ_
+          scheduler:
+            instanceName: XBW_SCHEDULER # default quartzScheduler
+            instanceId: AUTO
+          threadPool:
+            class: org.quartz.simpl.SimpleThreadPool
+            threadCount: 20
+            threadPriority: 5
+    #startup-delay: 60s
+    wait-for-jobs-to-complete-on-shutdown: true
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/springboot?useUnicode=true&characterEncoding=utf8&serverTimezone=UTC&useSSL=false&nullCatalogMeansCurrent=true
+    username: root
+    password:
