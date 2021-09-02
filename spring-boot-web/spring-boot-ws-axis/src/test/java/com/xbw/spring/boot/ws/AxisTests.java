@@ -97,13 +97,13 @@ class AxisTests {
         options.setTo(targetEPR);
 
         // Setting the weather
-        QName opSetWeather = new QName("http://axis.project.boot.spring.xbw.com", "setWeather");
+        QName opSetWeather = new QName("http://pojo.project.boot.spring.xbw.com", "setWeather");
         Weather weather = createWeather();
         Weather[] opSetWeatherArgs = new Weather[]{weather};
         serviceClient.invokeRobust(opSetWeather, opSetWeatherArgs);
 
         // Getting the weather
-        QName opGetWeather = new QName("http://axis.project.boot.spring.xbw.com", "getWeather");
+        QName opGetWeather = new QName("http://pojo.project.boot.spring.xbw.com", "getWeather");
         Object[] opGetWeatherArgs = new Object[]{};
         Class<String>[] returnTypes = new Class[]{Weather.class};
         Object[] response = serviceClient.invokeBlocking(opGetWeather, opGetWeatherArgs, returnTypes);

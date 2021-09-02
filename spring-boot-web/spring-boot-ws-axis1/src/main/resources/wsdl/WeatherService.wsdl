@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wsdl:definitions targetNamespace="http://localhost:8080/services/WeatherService"
+                  xmlns:impl="http://localhost:8080/services/WeatherService"
+                  xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:wsdlsoap="http://schemas.xmlsoap.org/wsdl/soap/"
+                  xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <!--WSDL created by Apache Axis version: 1.4
+    Built on Apr 22, 2006 (06:55:48 PDT)-->
+    <wsdl:types>
+        <schema targetNamespace="http://localhost:8080/services/WeatherService"
+                xmlns="http://www.w3.org/2001/XMLSchema">
+            <import namespace="http://schemas.xmlsoap.org/soap/encoding/"/>
+            <complexType name="Weather">
+                <sequence>
+                    <element name="forecast" nillable="true" type="xsd:string"/>
+                    <element name="howMuchRain" type="xsd:float"/>
+                    <element name="rain" type="xsd:boolean"/>
+                    <element name="temperature" type="xsd:float"/>
+                </sequence>
+            </complexType>
+        </schema>
+    </wsdl:types>
+    <wsdl:message name="setWeatherRequest">
+        <wsdl:part name="weather" type="impl:Weather"/>
+    </wsdl:message>
+    <wsdl:message name="getWeatherRequest">
+    </wsdl:message>
+    <wsdl:message name="setWeatherResponse">
+    </wsdl:message>
+    <wsdl:message name="getWeatherResponse">
+        <wsdl:part name="getWeatherReturn" type="impl:Weather"/>
+    </wsdl:message>
+    <wsdl:portType name="WeatherService">
+        <wsdl:operation name="getWeather">
+            <wsdl:input message="impl:getWeatherRequest" name="getWeatherRequest"/>
+            <wsdl:output message="impl:getWeatherResponse" name="getWeatherResponse"/>
+        </wsdl:operation>
+        <wsdl:operation name="setWeather" parameterOrder="weather">
+            <wsdl:input message="impl:setWeatherRequest" name="setWeatherRequest"/>
+            <wsdl:output message="impl:setWeatherResponse" name="setWeatherResponse"/>
+        </wsdl:operation>
+    </wsdl:portType>
+    <wsdl:binding name="WeatherServiceSoapBinding" type="impl:WeatherService">
+        <wsdlsoap:binding style="rpc" transport="http://schemas.xmlsoap.org/soap/http"/>
+        <wsdl:operation name="getWeather">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="getWeatherRequest">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://pojo.project.boot.spring.xbw.com" use="encoded"/>
+            </wsdl:input>
+            <wsdl:output name="getWeatherResponse">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://localhost:8080/services/WeatherService" use="encoded"/>
+            </wsdl:output>
+        </wsdl:operation>
+        <wsdl:operation name="setWeather">
+            <wsdlsoap:operation soapAction=""/>
+            <wsdl:input name="setWeatherRequest">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://pojo.project.boot.spring.xbw.com" use="encoded"/>
+            </wsdl:input>
+            <wsdl:output name="setWeatherResponse">
+                <wsdlsoap:body encodingStyle="http://schemas.xmlsoap.org/soap/encoding/"
+                               namespace="http://localhost:8080/services/WeatherService" use="encoded"/>
+            </wsdl:output>
+        </wsdl:operation>
+    </wsdl:binding>
+    <wsdl:service name="WeatherServiceService">
+        <wsdl:port binding="impl:WeatherServiceSoapBinding" name="WeatherService">
+            <wsdlsoap:address location="http://localhost:8080/services/WeatherService"/>
+        </wsdl:port>
+    </wsdl:service>
+</wsdl:definitions>
