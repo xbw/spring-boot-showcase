@@ -52,6 +52,7 @@
         <module>spring-boot-web/spring-boot-ws-axis</module>
         <module>spring-boot-web/spring-boot-ws-axis1</module>
         <module>spring-boot-web/spring-boot-ws-cxf</module>
+        <module>spring-boot-web/spring-boot-ws-xfire</module>
         <module>spring-boot-workflow/spring-boot-activiti</module>
         <module>spring-boot-workflow/spring-boot-activiti6</module>
         <module>spring-boot-workflow/spring-boot-activiti7</module>

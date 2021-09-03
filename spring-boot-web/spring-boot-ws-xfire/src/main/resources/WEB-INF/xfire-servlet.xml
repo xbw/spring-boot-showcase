@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN"
+        "http://www.springframework.org/dtd/spring-beans.dtd">
+<beans>
+    <!--<import resource="classpath:org/codehaus/xfire/spring/xfire.xml"/>-->
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="urlMap">
+            <map>
+                <entry key="/XMLService.ws">
+                    <ref bean="xMLService"/>
+                </entry>
+            </map>
+        </property>
+    </bean>
+
+    <bean id="xFireExporter" class="org.codehaus.xfire.spring.remoting.XFireExporter" lazy-init="true" abstract="true">
+        <property name="serviceFactory" ref="xfire.serviceFactory"/>
+        <property name="xfire" ref="xfire"/>
+    </bean>
+
+    <bean id="xMLServiceImpl" class="com.xbw.spring.boot.project.xfire.impl.XMLServiceImpl"></bean>
+    <bean id="xMLService" parent="xFireExporter">
+        <property name="serviceBean" ref="xMLServiceImpl"/>
+        <property name="serviceClass" value="com.xbw.spring.boot.project.xfire.XMLService"/>
+    </bean>
+
+</beans>

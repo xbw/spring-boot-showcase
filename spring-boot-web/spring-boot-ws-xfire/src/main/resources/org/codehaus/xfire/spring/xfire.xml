@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <!--<import resource="classpath:org/codehaus/xfire/spring/customEditors.xml"/>-->
+  <import resource="customEditors.xml"/>
+  
+  <bean id="xfire.serviceRegistry"
+    class="org.codehaus.xfire.service.DefaultServiceRegistry" />
+
+  <bean id="xfire.transportManager"
+    class="org.codehaus.xfire.transport.DefaultTransportManager"
+    init-method="initialize" destroy-method="dispose">
+  </bean>
+
+  <bean id="xfire" class="org.codehaus.xfire.DefaultXFire">
+    <constructor-arg index="0">
+      <ref bean="xfire.serviceRegistry" />
+    </constructor-arg>
+    <constructor-arg index="1">
+      <ref bean="xfire.transportManager" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="xfire.typeMappingRegistry"
+    class="org.codehaus.xfire.aegis.type.DefaultTypeMappingRegistry"
+    init-method="createDefaultMappings">
+  </bean>
+
+  <bean id="xfire.aegisBindingProvider"
+    class="org.codehaus.xfire.aegis.AegisBindingProvider">
+    <constructor-arg index="0">
+      <ref bean="xfire.typeMappingRegistry" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="xfire.serviceFactory"
+    class="org.codehaus.xfire.service.binding.ObjectServiceFactory">
+    <constructor-arg index="0">
+      <ref bean="xfire.transportManager" />
+    </constructor-arg>
+    <constructor-arg index="1">
+      <ref bean="xfire.aegisBindingProvider" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="xfire.servletController"
+    class="org.codehaus.xfire.transport.http.XFireServletController">
+    <constructor-arg>
+      <ref bean="xfire" />
+    </constructor-arg>
+  </bean>
+
+  <bean id="xfire.messageServiceFactory"
+    class="org.codehaus.xfire.service.binding.ObjectServiceFactory">
+    <constructor-arg index="0" ref="xfire.transportManager" />
+    <constructor-arg index="1" ref="xfire.messageBindingProvider" />
+    <property name="style" value="message" />
+  </bean>
+
+  <bean id="xfire.messageBindingProvider"
+    class="org.codehaus.xfire.service.binding.MessageBindingProvider" />
+
+  <!-- 
+  <bean id="commons-attributes"
+    class="org.codehaus.xfire.spring.config.ServiceFactoryBean">
+    <constructor-arg index="0" value="commons-attributes" />
+  </bean>
+  
+  <bean id="jsr181"
+    class="org.codehaus.xfire.spring.config.ServiceFactoryBean"
+    init-method="initialize">
+    <constructor-arg index="0" value="jsr181" />
+  </bean>
+ -->
+</beans>

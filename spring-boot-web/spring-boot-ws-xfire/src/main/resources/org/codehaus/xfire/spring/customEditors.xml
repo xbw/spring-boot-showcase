@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE beans PUBLIC "-//SPRING//DTD BEAN//EN" "http://www.springframework.org/dtd/spring-beans.dtd">
+
+<beans>
+
+  <bean id="xfire.customEditorConfigurer"
+    class="org.springframework.beans.factory.config.CustomEditorConfigurer">
+    <property name="customEditors">
+      <map>
+        <!--<entry key="org.codehaus.xfire.service.ServiceFactory">
+          <bean class="org.codehaus.xfire.spring.editors.ServiceFactoryEditor">
+            <property name="transportManager" ref="xfire.transportManager" />
+          </bean>
+        </entry>-->
+        <entry key="org.codehaus.xfire.service.ServiceFactory"
+               value="org.codehaus.xfire.spring.editors.ServiceFactoryEditor">
+        </entry>
+      </map>
+    </property>
+  </bean>
+
+</beans>
