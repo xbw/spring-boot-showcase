@@ -26,3 +26,22 @@ modify to
 </entry>
 
 ```
+
+### META-INF/xfire/services.xml
+```
+Caused by: org.springframework.beans.factory.BeanDefinitionStoreException: Unrecognized xbean element mapping: beans in namespace http://xfire.codehaus.org/config/1.0
+```
+```
+<beans xmlns="http://xfire.codehaus.org/config/1.0">
+<service>
+</service>
+</beans>
+
+modify to
+
+<beans>
+<service xmlns="http://xfire.codehaus.org/config/1.0">
+</service>
+</beans>
+
+```

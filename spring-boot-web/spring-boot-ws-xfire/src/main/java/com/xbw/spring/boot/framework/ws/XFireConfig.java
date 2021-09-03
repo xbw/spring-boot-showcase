@@ -4,6 +4,7 @@ import org.codehaus.xfire.XFire;
 import org.codehaus.xfire.annotations.jsr181.Jsr181WebAnnotations;
 import org.codehaus.xfire.spring.XFireSpringServlet;
 import org.codehaus.xfire.spring.remoting.Jsr181HandlerMapping;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
 import org.springframework.boot.web.servlet.ServletRegistrationBean;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -20,6 +21,7 @@ public class XFireConfig {
     public ServletRegistrationBean<XFireSpringServlet> xFireSpringServlet() {
         ServletRegistrationBean<XFireSpringServlet> servlet = new ServletRegistrationBean<>();
         servlet.setServlet(new XFireSpringServlet());
+        servlet.addUrlMappings("/servlet/XFireServlet/*");
         servlet.addUrlMappings("/services/*");
         servlet.setLoadOnStartup(1);
         servlet.setName("XFireSpringServlet");

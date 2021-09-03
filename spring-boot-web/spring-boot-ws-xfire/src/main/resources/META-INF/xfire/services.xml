@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans>
+    <service xmlns="http://xfire.codehaus.org/config/1.0">
+        <name>BookService</name>
+        <namespace>http://xfire.codehaus.org/BookService</namespace>
+        <serviceClass>com.xbw.spring.boot.project.pojo.BookService</serviceClass>
+        <implementationClass>com.xbw.spring.boot.project.pojo.impl.BookServiceImpl</implementationClass>
+    </service>
+</beans>
