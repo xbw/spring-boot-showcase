@@ -25,6 +25,9 @@
         <module>spring-boot-cmp/spring-boot-spy</module>
         <module>spring-boot-converter/spring-boot-converter</module>
         <module>spring-boot-converter/spring-boot-json</module>
+        <module>spring-boot-logging/spring-boot-log4j2</module>
+        <module>spring-boot-logging/spring-boot-logging</module>
+        <module>spring-boot-secure/spring-boot-security</module>
         <module>spring-boot-sql/spring-boot-beetlsql</module>
         <module>spring-boot-sql/spring-boot-beetlsql-2x</module>
         <module>spring-boot-sql/spring-boot-datasource</module>
@@ -36,8 +39,6 @@
         <module>spring-boot-sql/spring-boot-mybatis-multi</module>
         <module>spring-boot-sql/spring-boot-mybatis-plus</module>
         <module>spring-boot-sql/spring-boot-mybatis-xml</module>
-        <module>spring-boot-logging/spring-boot-log4j2</module>
-        <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-template/spring-boot-freemarker</module>
         <module>spring-boot-template/spring-boot-groovy</module>
         <module>spring-boot-template/spring-boot-mustache</module>
@@ -66,6 +67,8 @@
         <java.version>1.8</java.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring-boot.version>2.4.10</spring-boot.version>
+
+        <bouncycastle.version>1.69</bouncycastle.version>
     </properties>
 
     <dependencies>
