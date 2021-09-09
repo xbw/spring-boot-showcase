@@ -8,6 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 /**
+ * https://docs.spring.io/spring-security/site/docs/current/reference/html5/
  * @author xbw
  * Default
  * @see org.springframework.boot.autoconfigure.security.servlet.SpringBootWebSecurityConfiguration

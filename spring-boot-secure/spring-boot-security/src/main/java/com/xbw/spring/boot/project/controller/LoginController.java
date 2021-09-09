@@ -11,7 +11,7 @@ public class LoginController extends BaseController {
 
     @GetMapping("/login")
     public String getLogin() {
-        List<String> list = getAuthentication();
+        List<String> list = getGrantedAuthority();
         if (list.contains(SecurityConstant.CONSTANT_ROLE_ANONYMOUS)) {
             return "login";
         } else if (list.contains(SecurityConstant.CONSTANT_ROLE_ADMIN)) {

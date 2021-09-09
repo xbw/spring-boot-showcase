@@ -1,9 +1,11 @@
 package com.xbw.spring.boot.framework.security.adapter;
 
 import com.xbw.spring.boot.framework.security.filter.CustomAuthenticationFilter;
+import com.xbw.spring.boot.framework.security.handler.CustomAccessDeniedHandler;
 import com.xbw.spring.boot.framework.security.provider.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
@@ -37,6 +39,7 @@ public class SecurityExtendsConfig extends WebSecurityConfigurerAdapter {
      * @throws Exception
      * @see org.springframework.security.config.annotation.web.configurers.CorsConfigurer
      * @see org.springframework.security.config.annotation.web.configurers.CsrfConfigurer
+     * @see org.springframework.security.config.annotation.web.configurers.ExceptionHandlingConfigurer
      * @see org.springframework.security.config.annotation.web.configurers.ExpressionUrlAuthorizationConfigurer
      * @see org.springframework.security.config.annotation.web.configurers.FormLoginConfigurer
      * @see org.springframework.security.config.annotation.web.configurers.LogoutConfigurer
@@ -50,6 +53,9 @@ public class SecurityExtendsConfig extends WebSecurityConfigurerAdapter {
         http.cors();
 
         http.csrf().disable();
+
+//        http.exceptionHandling().accessDeniedPage("/403");
+        http.exceptionHandling().accessDeniedHandler(new CustomAccessDeniedHandler());
 
         http.authorizeRequests()
                 .antMatchers(AUTH_WHITELIST).permitAll()
@@ -81,5 +87,4 @@ public class SecurityExtendsConfig extends WebSecurityConfigurerAdapter {
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
         auth.authenticationProvider(new CustomAuthenticationProvider(userDetailsService, new BCryptPasswordEncoder()));
     }
-
 }

@@ -1,13 +1,11 @@
 package com.xbw.spring.boot.project.controller;
 
+import com.xbw.spring.boot.project.service.BaseService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.context.SecurityContextHolder;
 
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
 /**
@@ -15,22 +13,20 @@ import java.util.List;
  */
 @SuppressWarnings("unused")
 public class BaseController {
-    protected Logger logger = LoggerFactory.getLogger(BaseController.class);
+    protected Logger logger = LoggerFactory.getLogger(this.getClass());
 
-    public List<String> getAuthentication() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        Collection<? extends GrantedAuthority> authorities = authentication.getAuthorities();
-        List<String> list = new ArrayList<>();
-        for (GrantedAuthority grantedAuthority : authorities) {
-            list.add(grantedAuthority.getAuthority());
-        }
-        logger.debug("GrantedAuthority List: {}", list);
-        return list;
+    @Autowired
+    BaseService baseService;
+
+    public Authentication getAuthentication() {
+        return baseService.getAuthentication();
+    }
+
+    public List<String> getGrantedAuthority() {
+        return baseService.getGrantedAuthority();
     }
 
     public String getPrincipal() {
-        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
-        logger.debug("Principal: {}", authentication);
-        return authentication.getPrincipal().toString();
+        return baseService.getPrincipal();
     }
 }
