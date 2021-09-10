@@ -11,7 +11,7 @@ import org.springframework.remoting.jaxws.SimpleJaxWsServiceExporter;
 public class JaxWsConfig {
     @Value("${spring.webservices.host:127.1}")
     private String host;
-    @Value("${spring.webservices.port::8081}")
+    @Value("${spring.webservices.port:8081}")
     private String port;
     @Value("${spring.webservices.path:/services}")
     private String services;
