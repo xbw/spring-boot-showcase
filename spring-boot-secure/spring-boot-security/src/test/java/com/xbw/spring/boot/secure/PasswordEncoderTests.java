@@ -62,6 +62,10 @@ class PasswordEncoderTests {
     void delegatingDefault() {
         PasswordEncoder encoder = PasswordEncoderFactories.createDelegatingPasswordEncoder();
         test(encoder);
+
+        Assertions.assertTrue(encoder.matches(rawPassword, "{bcrypt}$2a$10$QZtRBgV7FghhFx/zhpaj5.dr8hzOikH7qkh6ztOG6TyuzvmQLAjua"));
+        Assertions.assertTrue(encoder.matches(rawPassword, "{noop}xbw"));
+        Assertions.assertTrue(encoder.matches(rawPassword, "{pbkdf2}7bb168927f4611adaadb20c99e4ff12349f975c2e5974b9d61de8f8c0f762fc55ae79b45775cc16d"));
     }
 
     @Test

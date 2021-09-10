@@ -1,13 +1,10 @@
 package com.xbw.spring.boot.framework.security.filter;
 
-import com.xbw.spring.boot.framework.security.handler.CustomAuthenticationSuccessHandler;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.AuthenticationException;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 import javax.servlet.FilterChain;
@@ -21,8 +18,6 @@ import java.io.IOException;
  */
 public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
     protected Logger logger = LoggerFactory.getLogger(this.getClass());
-
-    private AuthenticationSuccessHandler successHandler = new CustomAuthenticationSuccessHandler();
 
     public CustomAuthenticationFilter(AuthenticationManager authenticationManager) {
         logger.debug("AuthenticationManager -> {}", authenticationManager);
@@ -39,11 +34,10 @@ public class CustomAuthenticationFilter extends UsernamePasswordAuthenticationFi
     @Override
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) throws IOException, ServletException {
-        SecurityContextHolder.getContext().setAuthentication(authResult);
-
+        //TODO Add feature like token
         String token = "xbw";
         response.addHeader("Authorization", "Token " + token);
 
-        this.successHandler.onAuthenticationSuccess(request, response, authResult);
+        super.successfulAuthentication(request, response, chain, authResult);
     }
 }

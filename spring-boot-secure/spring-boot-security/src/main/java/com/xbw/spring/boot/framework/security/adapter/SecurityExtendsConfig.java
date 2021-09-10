@@ -2,16 +2,21 @@ package com.xbw.spring.boot.framework.security.adapter;
 
 import com.xbw.spring.boot.framework.security.filter.CustomAuthenticationFilter;
 import com.xbw.spring.boot.framework.security.handler.CustomAccessDeniedHandler;
+import com.xbw.spring.boot.framework.security.handler.CustomAuthenticationSuccessHandler;
 import com.xbw.spring.boot.framework.security.provider.CustomAuthenticationProvider;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.Bean;
+import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.security.web.authentication.rememberme.TokenBasedRememberMeServices;
 
 /**
  * https://blog.csdn.net/qq_22172133/article/details/86503223
@@ -30,9 +35,12 @@ public class SecurityExtendsConfig extends WebSecurityConfigurerAdapter {
             "/webjars/**",
             "/login"
     };
-
+    @Autowired
+    private PasswordEncoder passwordEncoder;
     @Autowired
     private UserDetailsService userDetailsService;
+    @Value("${spring.security.remember-me-key:xbw}")
+    private String rememberMeKey;
 
     /**
      * @param http
@@ -75,16 +83,28 @@ public class SecurityExtendsConfig extends WebSecurityConfigurerAdapter {
                 .logoutSuccessUrl("/login")
                 .permitAll();
 
-//        http.rememberMe();
+        http.rememberMe().key(rememberMeKey);
 
 //        http.sessionManagement()
 //                .sessionCreationPolicy(SessionCreationPolicy.STATELESS);
 
-        http.addFilter(new CustomAuthenticationFilter(authenticationManager()));
+        http.addFilter(getCustomFilter(authenticationManager()));
+    }
+
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
     }
 
     @Override
     public void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(new CustomAuthenticationProvider(userDetailsService, new BCryptPasswordEncoder()));
+        auth.userDetailsService(userDetailsService);
+        auth.authenticationProvider(new CustomAuthenticationProvider(userDetailsService, passwordEncoder));
+    }
+
+    private CustomAuthenticationFilter getCustomFilter(AuthenticationManager authenticationManager) {
+        CustomAuthenticationFilter customAuthenticationFilter = new CustomAuthenticationFilter(authenticationManager);
+        customAuthenticationFilter.setRememberMeServices(new TokenBasedRememberMeServices(rememberMeKey, userDetailsService));
+        return customAuthenticationFilter;
     }
 }

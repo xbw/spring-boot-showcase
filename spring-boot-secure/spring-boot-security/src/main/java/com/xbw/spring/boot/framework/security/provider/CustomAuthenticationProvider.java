@@ -11,8 +11,10 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.util.Assert;
+import org.springframework.util.ObjectUtils;
+import org.springframework.util.StringUtils;
 
 import java.util.ArrayList;
 
@@ -26,7 +28,7 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     private final UserDetailsService userDetailsService;
     private final PasswordEncoder passwordEncoder;
 
-    public CustomAuthenticationProvider(UserDetailsService userDetailsService, BCryptPasswordEncoder passwordEncoder) {
+    public CustomAuthenticationProvider(UserDetailsService userDetailsService, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
     }
@@ -36,23 +38,26 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
      */
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
-        String name = authentication.getName();
-        String password = authentication.getCredentials().toString();
-        UserDetails userDetails = userDetailsService.loadUserByUsername(name);
-        if (null != userDetails) {
+        String username = authentication.getName();
+        if (!StringUtils.hasText(username)) {
+            //Assert.notNull(username, "Username must not be null");
+            throw new UsernameNotFoundException("Username must not be null");
+        }
+        String password = (String) authentication.getCredentials();
+        if (!StringUtils.hasText(password)) {
+            //Assert.notNull(password, "Password must not be null");
+            throw new BadCredentialsException("Password must not be null");
+        }
+        UserDetails userDetails = userDetailsService.loadUserByUsername(username);
+
+        if (!ObjectUtils.isEmpty(userDetails)) {
             if (passwordEncoder.matches(password, userDetails.getPassword())) {
-                ArrayList<GrantedAuthority> authorities = new ArrayList<>();
-                if (SecurityConstant.CONSTANT_USER_ADMIN.equals(name)) {
-                    authorities.add(getAuthority(SecurityConstant.CONSTANT_ROLE_ADMIN));
-                } else {
-                    authorities.add(getAuthority(SecurityConstant.CONSTANT_ROLE_USER));
-                }
-                return new UsernamePasswordAuthenticationToken(name, password, authorities);
+                return new UsernamePasswordAuthenticationToken(username, password, userDetails.getAuthorities());
             } else {
-                throw new BadCredentialsException("Error password");
+                throw new BadCredentialsException("Incorrect password");
             }
         } else {
-            throw new UsernameNotFoundException("User is null");
+            throw new UsernameNotFoundException("UserDetails is null");
         }
     }
 
@@ -65,7 +70,4 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
         return authentication.equals(UsernamePasswordAuthenticationToken.class);
     }
 
-    private GrantedAuthority getAuthority(String role) {
-        return new SimpleGrantedAuthority(role);
-    }
 }
