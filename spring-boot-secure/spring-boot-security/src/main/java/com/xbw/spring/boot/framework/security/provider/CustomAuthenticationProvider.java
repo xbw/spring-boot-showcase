@@ -39,12 +39,12 @@ public class CustomAuthenticationProvider implements AuthenticationProvider {
     @Override
     public Authentication authenticate(Authentication authentication) throws AuthenticationException {
         String username = authentication.getName();
-        if (!StringUtils.hasText(username)) {
+        if (!StringUtils.hasLength(username)) {
             //Assert.notNull(username, "Username must not be null");
             throw new UsernameNotFoundException("Username must not be null");
         }
         String password = (String) authentication.getCredentials();
-        if (!StringUtils.hasText(password)) {
+        if (!StringUtils.hasLength(password)) {
             //Assert.notNull(password, "Password must not be null");
             throw new BadCredentialsException("Password must not be null");
         }
