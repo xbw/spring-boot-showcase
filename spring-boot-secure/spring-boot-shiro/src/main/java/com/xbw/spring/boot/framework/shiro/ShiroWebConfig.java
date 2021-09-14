@@ -3,6 +3,9 @@ package com.xbw.spring.boot.framework.shiro;
 import com.xbw.spring.boot.framework.shiro.realm.ShiroRealm;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
+import org.apache.shiro.authc.Authenticator;
+import org.apache.shiro.authc.pam.AllSuccessfulStrategy;
+import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.realm.SimpleAccountRealm;
@@ -80,7 +83,7 @@ public class ShiroWebConfig extends AbstractShiroWebConfiguration {
      * @return
      * @see org.apache.shiro.authc.credential.SimpleCredentialsMatcher
      */
-//    @Bean
+    @Bean
     public Realm simpleAccountRealm() {
         SimpleAccountRealm realm = new SimpleAccountRealm();
         realm.addAccount("xbw", "xbw", "admin");
@@ -89,4 +92,16 @@ public class ShiroWebConfig extends AbstractShiroWebConfiguration {
         logger.debug("SimpleAccountRealm: {} ", realm);
         return realm;
     }
+
+    /**
+     * Change to AllSuccessfulStrategy
+     * @return
+     */
+    @Override
+    protected Authenticator authenticator() {
+        ModularRealmAuthenticator authenticator = (ModularRealmAuthenticator) super.authenticator();
+        //authenticator.setAuthenticationStrategy(new AllSuccessfulStrategy());
+        return authenticator;
+    }
+
 }
