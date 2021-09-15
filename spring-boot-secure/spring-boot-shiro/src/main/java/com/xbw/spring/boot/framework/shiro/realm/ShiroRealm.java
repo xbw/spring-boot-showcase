@@ -4,9 +4,12 @@ import com.xbw.spring.boot.framework.shiro.ShiroConstant;
 import org.apache.shiro.authc.*;
 import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.authz.SimpleAuthorizationInfo;
+import org.apache.shiro.crypto.hash.Md5Hash;
+import org.apache.shiro.crypto.hash.SimpleHash;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.realm.Realm;
 import org.apache.shiro.subject.PrincipalCollection;
+import org.apache.shiro.util.ByteSource;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -35,7 +38,7 @@ public class ShiroRealm extends AuthorizingRealm {
         if (upToken.getPassword() != null) {
             password = new String(upToken.getPassword());
         }
-        Object user = null;
+        Object user;
         try {
             // TODO query User info
             user = username;
@@ -59,7 +62,10 @@ public class ShiroRealm extends AuthorizingRealm {
             throw new AuthenticationException(e.getMessage(), e);
         }
 
-        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
+//        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, password, getName());
+        ByteSource credentialsSalt = ByteSource.Util.bytes(username);
+        SimpleHash hashedCredentials = new SimpleHash(Md5Hash.ALGORITHM_NAME, password.toCharArray(), credentialsSalt, 2);
+        SimpleAuthenticationInfo info = new SimpleAuthenticationInfo(user, hashedCredentials, credentialsSalt, getName());
         logger.info("doGetAuthenticationInfo SimpleAuthenticationInfo: {}", info);
         return info;
     }
@@ -91,6 +97,4 @@ public class ShiroRealm extends AuthorizingRealm {
         }
         return info;
     }
-
-
 }

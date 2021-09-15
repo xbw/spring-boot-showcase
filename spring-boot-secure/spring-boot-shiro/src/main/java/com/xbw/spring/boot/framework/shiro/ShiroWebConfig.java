@@ -4,7 +4,8 @@ import com.xbw.spring.boot.framework.shiro.realm.ShiroRealm;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
 import org.apache.shiro.authc.Authenticator;
-import org.apache.shiro.authc.pam.AllSuccessfulStrategy;
+import org.apache.shiro.authc.credential.CredentialsMatcher;
+import org.apache.shiro.authc.credential.HashedCredentialsMatcher;
 import org.apache.shiro.authc.pam.ModularRealmAuthenticator;
 import org.apache.shiro.mgt.SessionsSecurityManager;
 import org.apache.shiro.realm.Realm;
@@ -72,8 +73,9 @@ public class ShiroWebConfig extends AbstractShiroWebConfiguration {
     }
 
     @Bean
-    public Realm shiroRealm() {
+    public ShiroRealm shiroRealm() {
         ShiroRealm realm = new ShiroRealm();
+        realm.setCredentialsMatcher(credentialsMatcher());
         logger.debug("ShiroRealm CredentialsMatcher: {}", realm.getCredentialsMatcher());
         logger.debug("ShiroRealm: {} ", realm);
         return realm;
@@ -84,13 +86,21 @@ public class ShiroWebConfig extends AbstractShiroWebConfiguration {
      * @see org.apache.shiro.authc.credential.SimpleCredentialsMatcher
      */
     @Bean
-    public Realm simpleAccountRealm() {
+    public SimpleAccountRealm simpleAccountRealm() {
         SimpleAccountRealm realm = new SimpleAccountRealm();
         realm.addAccount("xbw", "xbw", "admin");
         realm.addAccount("user", "user", "user");
         logger.debug("SimpleAccountRealm CredentialsMatcher: {}", realm.getCredentialsMatcher());
         logger.debug("SimpleAccountRealm: {} ", realm);
         return realm;
+    }
+
+    @Bean
+    public CredentialsMatcher credentialsMatcher() {
+        HashedCredentialsMatcher matcher = new HashedCredentialsMatcher();
+        matcher.setHashAlgorithmName("md5");
+        matcher.setHashIterations(2);
+        return matcher;
     }
 
     /**
