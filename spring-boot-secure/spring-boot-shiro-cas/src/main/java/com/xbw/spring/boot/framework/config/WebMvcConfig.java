@@ -22,7 +22,6 @@ public class WebMvcConfig implements WebMvcConfigurer {
         registry.addViewController("/admin/hello").setViewName("admin/hello");
 
         registry.addViewController("/403").setViewName("error/403");
-        registry.addViewController("/un-auth").setViewName("error/403");
     }
 
     @Override

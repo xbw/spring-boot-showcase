@@ -1,5 +1,6 @@
 package com.xbw.spring.boot.framework.exception;
 
+import org.apache.shiro.ShiroException;
 import org.apache.shiro.authz.AuthorizationException;
 import org.apache.shiro.authz.UnauthorizedException;
 import org.slf4j.Logger;
@@ -22,4 +23,11 @@ public class ShiroExceptionHandler {
         logger.error("AuthorizationException:", e);
         return "AuthorizationException";
     }
+
+    @ExceptionHandler(ShiroException.class)
+    public String handleShiroException(Exception e) {
+        logger.error("ShiroException:", e);
+        return "ShiroException";
+    }
+
 }

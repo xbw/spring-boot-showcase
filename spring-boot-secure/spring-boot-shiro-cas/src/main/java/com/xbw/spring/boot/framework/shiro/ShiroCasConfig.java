@@ -56,8 +56,15 @@ public class ShiroCasConfig extends AbstractShiroWebConfiguration {
     @Override
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+
         // actuator
         chainDefinition.addPathDefinition("/actuator", "anon");
+
+        // logged in users with the 'admin' role
+        chainDefinition.addPathDefinition("/admin/**", "authc, roles[admin]");
+
+        // logged in users with the 'document:read' permission
+        chainDefinition.addPathDefinition("/docs/**", "authc, perms[document:read]");
 
         // cas
         chainDefinition.addPathDefinition("/cas", "cas");

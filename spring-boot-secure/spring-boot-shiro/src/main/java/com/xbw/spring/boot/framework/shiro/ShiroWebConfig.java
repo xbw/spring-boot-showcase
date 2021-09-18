@@ -48,6 +48,8 @@ public class ShiroWebConfig extends AbstractShiroWebConfiguration {
     @Override
     public ShiroFilterChainDefinition shiroFilterChainDefinition() {
         DefaultShiroFilterChainDefinition chainDefinition = new DefaultShiroFilterChainDefinition();
+        // actuator
+        chainDefinition.addPathDefinition("/actuator", "anon");
 
         // logged in users with the 'admin' role
         chainDefinition.addPathDefinition("/admin/**", "authc, roles[admin]");
