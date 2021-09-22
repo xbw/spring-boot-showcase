@@ -78,10 +78,18 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     }
 
     private GrantedAuthority getAuthority(String authorities) {
+        if (!authorities.startsWith("ROLE_")) {
+            authorities = "ROLE_" + authorities;
+        }
         return new SimpleGrantedAuthority(authorities);
     }
 
     private List<GrantedAuthority> getAuthority(String... authorities) {
+        for (int i = 0; i < authorities.length; i++) {
+            if (!authorities[i].startsWith("ROLE_")) {
+                authorities[i] = "ROLE_" + authorities[i];
+            }
+        }
         return AuthorityUtils.createAuthorityList(authorities);
     }
 

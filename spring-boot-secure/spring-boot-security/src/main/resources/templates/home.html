@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org">
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
 <head>
     <title>Spring Security Example</title>
 </head>
@@ -7,6 +8,26 @@
 <h1>Welcome!</h1>
 <h2>User Home</h2>
 <p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
-<p>Click <a th:href="@{/admin/hello}">here</a> to see a admin greeting.</p>
+<p sec:authorize="hasRole('ADMIN')">Click <a th:href="@{/admin/hello}">here</a> to see a admin greeting.</p>
+Principal#getName():
+<span sec:authentication="name"></span>
+<div th:text="${#authentication.name}">
+    The value of the "name" property of the authentication object should appear here.
+</div>
+<div sec:authentication="name">
+    The value of the "name" property of the authentication object should appear here.
+</div>
+<hr/>
+Authentication#getAuthorities():
+<span sec:authentication="authorities"></span>
+<hr/>
+<span sec:authorize="hasAnyRole('ADMIN','USER')">hasAnyRole('ADMIN','USER')</span>
+<hr/>
+<div sec:authorize="hasRole('ROLE_ADMIN')">
+    This will only be displayed if authenticated user has role ROLE_ADMIN.
+</div>
+<div th:if="${#authorization.expression('hasRole(''ROLE_USER'')')}">
+    This will only be displayed if authenticated user has role ROLE_USER.
+</div>
 </body>
 </html>
