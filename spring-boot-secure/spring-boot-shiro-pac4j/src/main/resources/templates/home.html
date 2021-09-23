@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:shiro="http://www.pollix.at/thymeleaf/shiro">
+<head>
+    <title>Apache Shiro Example</title>
+</head>
+<body>
+<h1>Welcome!</h1>
+<h2>User Home</h2>
+<p>Click <a th:href="@{/hello}">here</a> to see a greeting.</p>
+<p shiro:hasPermission="admin:hello:view">Click <a th:href="@{/admin/hello}">here</a> to see a admin greeting.</p>
+</body>
+</html>
