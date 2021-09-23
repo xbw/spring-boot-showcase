@@ -70,11 +70,6 @@
             <artifactId>spring-webmvc-pac4j</artifactId>
             <version>4.0.1</version>
         </dependency>-->
-        <dependency>
-            <groupId>org.jasig.cas.client</groupId>
-            <artifactId>cas-client-integration-tomcat-common</artifactId>
-            <version>3.3.3</version>
-        </dependency>
     </dependencies>
 
     <dependencyManagement>

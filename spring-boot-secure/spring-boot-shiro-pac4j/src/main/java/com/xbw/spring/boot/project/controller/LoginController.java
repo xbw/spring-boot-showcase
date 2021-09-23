@@ -15,7 +15,7 @@ public class LoginController {
     public String cas() {
         Object principal = ShiroUtils.getPrincipal();
         if (principal != null) {
-            return successUrl;
+            return "redirect:" + successUrl;
         }
         return null;
     }
