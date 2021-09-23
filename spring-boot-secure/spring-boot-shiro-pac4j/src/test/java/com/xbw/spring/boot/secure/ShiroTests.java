@@ -22,7 +22,7 @@ import org.springframework.boot.test.context.SpringBootTest;
  * @author xbw
  */
 @SpringBootTest
-public class ShiroTests {
+class ShiroTests {
     private final String user = "user";
     private final String password = "password";
     private final String name = "shiroRealm";

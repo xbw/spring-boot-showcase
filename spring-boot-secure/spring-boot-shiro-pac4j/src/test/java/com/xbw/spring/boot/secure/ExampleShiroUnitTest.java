@@ -14,7 +14,7 @@ import org.mockito.Mockito;
  * Simple example test class showing how one may perform unit tests for
  * code that requires Shiro APIs.
  */
-public class ExampleShiroUnitTest extends AbstractShiroTest {
+class ExampleShiroUnitTest extends AbstractShiroTest {
 
     @BeforeEach
     void setUp() {
@@ -26,7 +26,7 @@ public class ExampleShiroUnitTest extends AbstractShiroTest {
     }
 
     @Test
-    public void testSimple() {
+    void testSimple() {
         //1.  Create a mock authenticated Subject instance for the test to run:
         Subject subjectUnderTest = getSubject();
         Assertions.assertFalse(subjectUnderTest.isAuthenticated());
@@ -40,7 +40,7 @@ public class ExampleShiroUnitTest extends AbstractShiroTest {
     }
 
     @Test
-    public void tearDownSubject() {
+    void tearDownSubject() {
         //3. Unbind the subject from the current thread:
         clearSubject();
     }
