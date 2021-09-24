@@ -28,6 +28,7 @@
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-secure/spring-boot-security</module>
+        <module>spring-boot-secure/spring-boot-security-cas</module>
         <module>spring-boot-secure/spring-boot-shiro</module>
         <module>spring-boot-secure/spring-boot-shiro-cas</module>
         <module>spring-boot-secure/spring-boot-shiro-pac4j</module>
