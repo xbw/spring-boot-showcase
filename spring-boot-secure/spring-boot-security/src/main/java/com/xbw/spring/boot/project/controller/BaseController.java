@@ -26,7 +26,7 @@ public class BaseController {
         return baseService.getGrantedAuthority();
     }
 
-    public String getPrincipal() {
+    public Object getPrincipal() {
         return baseService.getPrincipal();
     }
 }

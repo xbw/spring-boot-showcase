@@ -33,9 +33,9 @@ public class BaseService {
         return list;
     }
 
-    public String getPrincipal() {
+    public Object getPrincipal() {
         Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
         logger.debug("Principal: {}", authentication);
-        return authentication.getPrincipal().toString();
+        return authentication.getPrincipal();
     }
 }
