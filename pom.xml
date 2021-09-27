@@ -13,6 +13,7 @@
         <module>spring-boot-base/spring-boot-aop</module>
         <module>spring-boot-base/spring-boot-banner</module>
         <module>spring-boot-base/spring-boot-el</module>
+        <module>spring-boot-base/spring-boot-file</module>
         <module>spring-boot-base/spring-boot-mail</module>
         <module>spring-boot-base/spring-boot-runner</module>
         <module>spring-boot-cache/spring-boot-cache</module>
