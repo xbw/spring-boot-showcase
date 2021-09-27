@@ -13,6 +13,7 @@ import org.apache.shiro.realm.SimpleAccountRealm;
 import org.apache.shiro.spring.web.config.AbstractShiroWebConfiguration;
 import org.apache.shiro.spring.web.config.DefaultShiroFilterChainDefinition;
 import org.apache.shiro.spring.web.config.ShiroFilterChainDefinition;
+import org.apache.shiro.subject.PrincipalCollection;
 import org.apache.shiro.subject.Subject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -26,15 +27,34 @@ import java.util.List;
 /**
  * http://shiro.apache.org/spring-boot.html
  * @author xbw
- * @see org.apache.shiro.web.filter.authc.FormAuthenticationFilter#onAccessDenied(ServletRequest, ServletResponse)
- * @see org.apache.shiro.web.filter.authc.FormAuthenticationFilter#executeLogin(ServletRequest, ServletResponse)
- * @see org.apache.shiro.subject.support.DelegatingSubject#login(AuthenticationToken)
- * @see org.apache.shiro.mgt.AbstractRememberMeManager#onSuccessfulLogin(Subject, AuthenticationToken, AuthenticationInfo)
- * @see org.apache.shiro.web.mgt.CookieRememberMeManager#rememberSerializedIdentity(Subject, byte[])
  * @see org.apache.shiro.spring.boot.autoconfigure.ShiroAutoConfiguration
  * @see org.apache.shiro.spring.config.web.autoconfigure.ShiroWebAutoConfiguration
  * @see org.apache.shiro.spring.config.web.autoconfigure.ShiroWebMvcAutoConfiguration
  * @see org.apache.shiro.spring.config.web.autoconfigure.ShiroWebFilterConfiguration
+ * <p>
+ * Order by
+ * @see org.apache.shiro.web.filter.authc.FormAuthenticationFilter#onAccessDenied(ServletRequest, ServletResponse)
+ * @see org.apache.shiro.web.filter.authc.FormAuthenticationFilter#executeLogin(ServletRequest, ServletResponse)
+ * @see org.apache.shiro.web.filter.authc.AuthenticatingFilter#createToken(ServletRequest, ServletResponse)
+ * @see org.apache.shiro.web.filter.authc.FormAuthenticationFilter#createToken(ServletRequest, ServletResponse)
+ * @see org.apache.shiro.subject.support.DelegatingSubject#login(AuthenticationToken)
+ * @see org.apache.shiro.mgt.DefaultSecurityManager#login(Subject, AuthenticationToken)
+ * @see org.apache.shiro.authc.AbstractAuthenticator#authenticate(AuthenticationToken)
+ * @see org.apache.shiro.authc.pam.ModularRealmAuthenticator#doAuthenticate(AuthenticationToken)
+ * @see org.apache.shiro.realm.AuthenticatingRealm#getAuthenticationInfo(AuthenticationToken)
+ * @see org.apache.shiro.realm.AuthenticatingRealm#doGetAuthenticationInfo(AuthenticationToken)
+ * then Custom Realm {@link ShiroRealm#doGetAuthenticationInfo(AuthenticationToken)}
+ * @see org.apache.shiro.realm.AuthenticatingRealm#assertCredentialsMatch(AuthenticationToken, AuthenticationInfo)
+ * @see org.apache.shiro.authc.credential.CredentialsMatcher#doCredentialsMatch(AuthenticationToken, AuthenticationInfo)
+ * @see org.apache.shiro.authc.credential.HashedCredentialsMatcher#doCredentialsMatch(AuthenticationToken, AuthenticationInfo)
+ * @see org.apache.shiro.mgt.DefaultSecurityManager#onSuccessfulLogin(AuthenticationToken, AuthenticationInfo, Subject)
+ * @see org.apache.shiro.mgt.DefaultSecurityManager#rememberMeSuccessfulLogin(AuthenticationToken, AuthenticationInfo, Subject)
+ * @see org.apache.shiro.web.mgt.CookieRememberMeManager#rememberSerializedIdentity(Subject, byte[])
+ * @see org.apache.shiro.mgt.AbstractRememberMeManager#onSuccessfulLogin(Subject, AuthenticationToken, AuthenticationInfo)
+ * @see org.apache.shiro.subject.support.DelegatingSubject#isPermitted(String)
+ * @see org.apache.shiro.realm.AuthorizingRealm#isPermitted(PrincipalCollection, String)
+ * @see org.apache.shiro.realm.AuthorizingRealm#getAuthorizationInfo(PrincipalCollection)
+ * then Custom Realm {@link ShiroRealm#doGetAuthorizationInfo(PrincipalCollection)}
  */
 @Configuration
 public class ShiroWebConfig extends AbstractShiroWebConfiguration {
