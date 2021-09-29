@@ -29,6 +29,7 @@
         <module>spring-boot-logging/spring-boot-log4j2</module>
         <module>spring-boot-logging/spring-boot-logging</module>
         <module>spring-boot-messaging/spring-boot-activemq</module>
+        <module>spring-boot-messaging/spring-boot-artemis</module>
         <module>spring-boot-secure/spring-boot-security</module>
         <module>spring-boot-secure/spring-boot-security-cas</module>
         <module>spring-boot-secure/spring-boot-shiro</module>
