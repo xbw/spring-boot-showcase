@@ -13,7 +13,7 @@
     <name>${project.artifactId}</name>
 
     <properties>
-        <flowable.version>6.6.0</flowable.version>
+        <flowable.version>6.8.0</flowable.version>
     </properties>
 
     <dependencies>
