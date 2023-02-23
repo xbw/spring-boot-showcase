@@ -46,18 +46,18 @@
             <artifactId>c3p0</artifactId>
             <version>0.9.5.5</version>
         </dependency>
-        <dependency>
-            <groupId>com.alibaba</groupId>
-            <artifactId>druid</artifactId>
-            <version>1.2.6</version>
-        </dependency>
         <!--<dependency>
             <groupId>com.alibaba</groupId>
-            <artifactId>druid-spring-boot-starter</artifactId>
-            &lt;!&ndash; mvn compile
-            [WARNING] The POM for com.alibaba:druid:jar:1.1.21+ is invalid &ndash;&gt;
-            <version>1.2.6</version>
+            <artifactId>druid</artifactId>
+            <version>1.2.16</version>
         </dependency>-->
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>druid-spring-boot-starter</artifactId>
+            <!-- mvn compile
+            [WARNING] The POM for com.alibaba:druid:jar:1.1.21+ is invalid -->
+            <version>1.2.16</version>
+        </dependency>
 
         <dependency>
             <groupId>com.oracle.database.jdbc</groupId>
