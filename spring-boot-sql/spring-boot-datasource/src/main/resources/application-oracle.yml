@@ -8,8 +8,10 @@ spring:
     oracleucp:
       connection-factory-class-name: oracle.jdbc.pool.OracleDataSource
 
-#    initialization-mode: never # default embedded
-#    continue-on-error: true # default false
-#    # when schema active and use custom HikariDataSource -> exception during pool initialization oracle at oracle.jdbc.driver.PhysicalConnection.setSchema()
-#    schema: classpath:db/basic-sql-scripts/schema-oracle.sql
-#    data: classpath:db/basic-sql-scripts/data-oralce.sql
+  sql:
+    init:
+      mode: never # default embedded
+      continue-on-error: true # default false
+      # when schema active and use custom HikariDataSource -> exception during pool initialization oracle at oracle.jdbc.driver.PhysicalConnection.setSchema()
+      # schema-locations: classpath:db/basic-sql-scripts/schema-oracle.sql
+      # data-locations: classpath:db/basic-sql-scripts/data-oralce.sql

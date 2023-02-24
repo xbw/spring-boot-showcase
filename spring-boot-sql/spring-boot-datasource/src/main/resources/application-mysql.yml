@@ -8,8 +8,10 @@ spring:
     oracleucp:
       connection-factory-class-name: com.mysql.cj.jdbc.MysqlDataSource
 
-    initialization-mode: never # default embedded
-    continue-on-error: true # default false
-    platform: mysql
-#    schema: classpath:schema.sql
-#    data: classpath:data.sql
+  sql:
+    init:
+      mode: never # default embedded
+      continue-on-error: true # default false
+      platform: mysql
+      # schema-locations: classpath:schema.sql
+      # data-locations: classpath:data.sql
