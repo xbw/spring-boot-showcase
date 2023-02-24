@@ -69,11 +69,11 @@ public class CasRealm extends org.apache.shiro.cas.CasRealm {
                 throw new IncorrectCredentialsException(e.getMessage(), e);
             } catch (AuthenticationException e) {
                 throw new AuthenticationException(e.getMessage(), e);
-            } catch (Exception e) {
-                throw new AuthenticationException(e.getMessage(), e);
             }
         } catch (TicketValidationException e) {
             throw new CasAuthenticationException("Unable to validate ticket [" + ticket + "]", e);
+        }catch (Exception e) {
+            throw new RuntimeException(e.getMessage(), e);
         }
     }
 
