@@ -46,6 +46,7 @@
             <version>2.1.0</version>
         </dependency>
 
+        <!-- https://github.com/bujiio/buji-pac4j#readme -->
         <!-- https://mvnrepository.com/artifact/io.buji/buji-pac4j -->
         <dependency>
             <groupId>io.buji</groupId>
