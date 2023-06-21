@@ -4,7 +4,9 @@ spring:
     pub-sub-domain: false # Default false
   artemis:
     mode: embedded
-    host: localhost
-    port: 61616
+    # @deprecated since 2.5.0 for removal in 2.7.0 in favor of broker url
+    #host: localhost
+    #port: 61616
+    broker-url: tcp://localhost:61616
     user: admin
     password: admin

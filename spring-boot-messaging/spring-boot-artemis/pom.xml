@@ -39,6 +39,13 @@
             <groupId>org.messaginghub</groupId>
             <artifactId>pooled-jms</artifactId>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/org.apache.activemq/artemis-jms-server -->
+        <!-- Adding org.apache.activemq:artemis-jms-server to your application lets you use embedded mode. -->
+        <dependency>
+            <groupId>org.apache.activemq</groupId>
+            <artifactId>artemis-jms-server</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
